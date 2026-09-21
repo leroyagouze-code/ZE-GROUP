@@ -9,7 +9,7 @@
   var chipsWrap = document.getElementById("catalogueFilters");
   var emptyState = document.getElementById("catalogueEmpty");
   var resultsCount = document.getElementById("catalogueCount");
-  var WHATSAPP_NUMBER = "22890000000"; // TODO: remplacer par le vrai numéro WhatsApp
+  var WHATSAPP_NUMBER = "22896638200"; // TODO: remplacer par le vrai numéro WhatsApp
 
   var state = { category: "tous", query: "" };
 

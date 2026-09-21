@@ -49,8 +49,8 @@
   var form = document.getElementById("contactForm");
   if (form) {
     var successBox = document.getElementById("formSuccess");
-    var WHATSAPP_NUMBER = "22890000000"; // TODO: remplacer par le vrai numéro WhatsApp
-    var CONTACT_EMAIL = "contact@agriwintogo.com";
+    var WHATSAPP_NUMBER = "22896638200"; // TODO: remplacer par le vrai numéro WhatsApp
+    var CONTACT_EMAIL = "agriwintogo@gmail.com";
 
     function buildMessage(data) {
       var lines = [

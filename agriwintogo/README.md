@@ -23,18 +23,21 @@ agriwintogo/
 ├── robots.txt, sitemap.xml, site.webmanifest   SEO technique de base
 ```
 
+## Coordonnées réelles (issues du brief créa)
+
+Le numéro de téléphone/WhatsApp (`+228 96 63 82 00`) et l'e-mail
+(`agriwintogo@gmail.com`) sont désormais les vraies coordonnées d'AgriWin
+Togo (KEGNON Emmanuel, CEO), appliquées dans toutes les pages, `js/main.js`
+et `js/catalogue.js`.
+
 ## À remplacer avant mise en ligne définitive
 
 Ces éléments sont des **placeholders clairement identifiés** à remplacer dès
 que le contenu réel sera fourni :
 
-- **Numéro de téléphone / WhatsApp** : `+228 90 00 00 00` (présent dans
-  toutes les pages : en-tête, pied de page, boutons flottants, `js/main.js`,
-  `js/catalogue.js`). À remplacer partout par le vrai numéro.
-- **E-mail** : `contact@agriwintogo.com` (déjà cohérent avec le nom de
-  domaine réservé).
 - **Réseaux sociaux** : liens Facebook (`facebook.com/agriwintogo`) et
-  TikTok (`tiktok.com/@agriwintogo`) à remplacer par les vraies pages.
+  TikTok (`tiktok.com/@agriwintogo`) à remplacer par les vraies URLs des
+  comptes (le brief indique seulement le nom « AgriWin Togo »).
 - **Photos** : toutes les images sont des visuels SVG générés (vert,
   clairement annotés « Image à venir »), dans `images/placeholders/`. Il
   suffit de remplacer les fichiers ou de changer les chemins `src` dans le
@@ -79,6 +82,21 @@ classique) pointant vers le nom de domaine `agriwintogo.com`. Un fichier
 `CNAME` propre à ce sous-projet devra être ajouté par l'hébergeur choisi
 (ce dépôt héberge déjà un autre site à la racine, avec son propre CNAME
 pour `zegroupafrica.com` — ne pas le modifier).
+
+## Maquette 2 — direction photographique
+
+`maquette-2/index.html` propose une seconde direction visuelle pour la page
+d'accueil : photographie plein cadre (mains en pépinière, plantation,
+marché), portrait + citation du fondateur, bandes photo pleine largeur.
+Les photos utilisées sont des images libres de droits (Pexels), choisies et
+recadrées pour rester cohérentes avec le contexte (pépinière, plants,
+travailleurs africains) et **sans aucune marque tierce visible** — elles
+sont clairement présentées comme des références de style et seront
+remplacées par les vraies photos d'AgriWin Togo (logo, équipe, pépinière)
+dès qu'elles seront transmises. Cette maquette réutilise `css/style.css`
+et n'ajoute qu'une feuille de style complémentaire
+(`maquette-2/css/maquette-2.css`) ; les autres pages (services, produits...)
+pointent encore vers la Maquette 1 le temps de la validation du style.
 
 ## SEO de base inclus
 
