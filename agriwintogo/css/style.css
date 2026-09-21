@@ -323,7 +323,15 @@ input, textarea, select { font-family: inherit; }
 .product-price strong { font-family: var(--font-head); font-size: 20px; color: var(--green-800); }
 .product-price span { font-size: 12.5px; color: var(--ink-500); }
 .product-actions { display: flex; gap: 8px; margin-top: 10px; }
-.product-actions .btn { flex: 1; }
+.product-actions .btn {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 /* ---------- Steps / process ---------- */
 .steps { counter-reset: step; display: grid; gap: 24px; }

@@ -11,10 +11,11 @@ const { adminLayout, loginLayout, escapeHtml } = require("../../views/layout");
 const router = express.Router();
 
 const CATEGORIES = [
-  { id: "fruitiers", label: "Plants fruitiers" },
-  { id: "forestiers", label: "Plants forestiers & ornement" },
-  { id: "semences", label: "Semences & intrants" },
-  { id: "elevage", label: "Élevage" },
+  { id: "fruitiers", label: "Arbres & plants fruitiers" },
+  { id: "agrumes", label: "Agrumes sélectionnés" },
+  { id: "epices", label: "Épices, arômes & condiments" },
+  { id: "herbes", label: "Herbes aromatiques & santé" },
+  { id: "ornement", label: "Plantes d'ornement & intérieur" },
 ];
 const categoryLabel = (id) => (CATEGORIES.find((c) => c.id === id) || {}).label || id;
 
@@ -98,7 +99,11 @@ router.get("/produits", requireAuth, (req, res) => {
         <td><img class="thumb" src="/${escapeHtml(p.image)}" alt=""></td>
         <td><strong>${escapeHtml(p.name)}</strong><br><span style="color:var(--ink-500);font-size:12.5px;">${escapeHtml(p.sku || "")}</span></td>
         <td>${escapeHtml(categoryLabel(p.category))}</td>
-        <td>${new Intl.NumberFormat("fr-FR").format(p.price)} FCFA / ${escapeHtml(p.unit)}</td>
+        <td>${
+          p.priceOnRequest
+            ? "Sur demande"
+            : `${new Intl.NumberFormat("fr-FR").format(p.price)}${p.priceMax ? " – " + new Intl.NumberFormat("fr-FR").format(p.priceMax) : ""} FCFA / ${escapeHtml(p.unit)}`
+        }</td>
         <td><span class="admin-badge ${p.active === false ? "admin-badge-off" : "admin-badge-on"}">${p.active === false ? "Masqué" : "Visible"}</span></td>
         <td>
           <div class="row-actions">
@@ -158,6 +163,19 @@ function productForm(p = {}) {
       <div class="admin-field">
         <label>Prix (FCFA)
           <input type="number" name="price" min="0" step="1" value="${p.price != null ? p.price : ""}" required>
+        </label>
+        <span class="hint">Laissez à 0 et cochez « Sur demande » ci-dessous si le prix n'est pas fixe.</span>
+      </div>
+      <div class="admin-field">
+        <label>Prix maximum (optionnel, pour une fourchette)
+          <input type="number" name="priceMax" min="0" step="1" value="${p.priceMax != null ? p.priceMax : ""}">
+        </label>
+        <span class="hint">Ex. 1 500 à 2 500 FCFA affichera « 1 500 – 2 500 FCFA ». Laissez vide pour un prix unique.</span>
+      </div>
+      <div class="admin-field">
+        <label style="flex-direction:row;align-items:center;gap:8px;">
+          <input type="checkbox" name="priceOnRequest" value="1" ${p.priceOnRequest ? "checked" : ""} style="width:auto;">
+          Prix sur demande (masque le prix)
         </label>
       </div>
       <div class="admin-field">
@@ -226,6 +244,8 @@ router.post("/produits", requireAuth, (req, res, next) => {
     name: req.body.name.trim(),
     category: req.body.category,
     price: Math.max(0, parseInt(req.body.price, 10) || 0),
+    priceMax: req.body.priceMax ? Math.max(0, parseInt(req.body.priceMax, 10) || 0) : null,
+    priceOnRequest: req.body.priceOnRequest === "1",
     unit: req.body.unit.trim(),
     stock: req.body.stock === "disponible" ? "disponible" : "sur commande",
     badge: (req.body.badge || "").trim() || null,
@@ -276,6 +296,8 @@ router.post("/produits/:id", requireAuth, (req, res, next) => {
     name: req.body.name.trim(),
     category: req.body.category,
     price: Math.max(0, parseInt(req.body.price, 10) || 0),
+    priceMax: req.body.priceMax ? Math.max(0, parseInt(req.body.priceMax, 10) || 0) : null,
+    priceOnRequest: req.body.priceOnRequest === "1",
     unit: req.body.unit.trim(),
     stock: req.body.stock === "disponible" ? "disponible" : "sur commande",
     badge: (req.body.badge || "").trim() || null,
