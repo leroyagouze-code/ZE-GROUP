@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B5E20"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+    <pattern id="p" width="40" height="40" patternTransform="rotate(20)" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <path d="M20 4 C 26 12, 26 20, 20 28 C 14 20, 14 12, 20 4 Z" fill="#ffffff" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="600" fill="url(#g)"/>
+  <rect width="1600" height="600" fill="url(#p)"/>
+  <g transform="translate(800.0,282.0)" opacity="0.9">
+    <path d="M0,-30 C 20,-30 34,-16 34,4 C 34,24 20,34 0,44 C -20,34 -34,24 -34,4 C -34,-16 -20,-30 0,-30 Z"
+          fill="none" stroke="#ffffff" stroke-width="3" opacity="0.55"/>
+    <path d="M0,-18 L0,30 M0,-4 C -12,-4 -18,4 -18,4 M0,10 C 12,10 18,18 18,18"
+          stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55"/>
+  </g>
+  <text x="50%" y="340.0" font-family="Arial, sans-serif" font-size="57" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.95">Nos réalisations</text>
+  <text x="50%" y="403.0" font-family="Arial, sans-serif" font-size="35" fill="#ffffff" text-anchor="middle" opacity="0.75">Image à venir — placeholder</text>
+</svg>
