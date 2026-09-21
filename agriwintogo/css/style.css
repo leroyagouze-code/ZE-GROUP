@@ -504,6 +504,16 @@ input, textarea, select { font-family: inherit; }
 .breadcrumb-strip .container { padding-top: 14px; padding-bottom: 14px; font-size: 13.5px; color: var(--ink-500); }
 .breadcrumb-strip a { color: var(--green-700); font-weight: 600; }
 
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -527,6 +537,7 @@ input, textarea, select { font-family: inherit; }
 
 @media (max-width: 720px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .cta-band { flex-direction: column; text-align: center; }
