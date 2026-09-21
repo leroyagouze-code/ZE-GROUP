@@ -225,43 +225,8 @@
       <span class="eyebrow">Catalogue</span>
       <h2>Nos produits phares du moment</h2>
     </div>
-    <div class="grid grid-4">
-      <article class="card product-card">
-        <div class="card-media"><span class="product-badge">Meilleure vente</span><img src="images/placeholders/product-manguier.svg" alt="Manguier greffé" loading="lazy" width="600" height="600"></div>
-        <div class="card-body">
-          <span class="card-tag">En stock</span>
-          <h3>Manguier greffé</h3>
-          <p>Variété améliorée, entrée en production précoce.</p>
-          <div class="product-price"><strong>2 500 FCFA</strong><span>/ plant</span></div>
-        </div>
-      </article>
-      <article class="card product-card">
-        <div class="card-media"><span class="product-badge">Populaire</span><img src="images/placeholders/product-avocatier.svg" alt="Avocatier greffé" loading="lazy" width="600" height="600"></div>
-        <div class="card-body">
-          <span class="card-tag">En stock</span>
-          <h3>Avocatier greffé</h3>
-          <p>Variétés Hass et locale, qualité export.</p>
-          <div class="product-price"><strong>3 000 FCFA</strong><span>/ plant</span></div>
-        </div>
-      </article>
-      <article class="card product-card">
-        <div class="card-media"><img src="images/placeholders/product-cocotier.svg" alt="Cocotier nain hybride" loading="lazy" width="600" height="600"></div>
-        <div class="card-body">
-          <span class="card-tag">Sur commande</span>
-          <h3>Cocotier nain hybride</h3>
-          <p>Haut rendement, idéal zones côtières.</p>
-          <div class="product-price"><strong>3 500 FCFA</strong><span>/ plant</span></div>
-        </div>
-      </article>
-      <article class="card product-card">
-        <div class="card-media"><span class="product-badge">Nouveau</span><img src="images/placeholders/product-moringa.svg" alt="Plants de moringa" loading="lazy" width="600" height="600"></div>
-        <div class="card-body">
-          <span class="card-tag">En stock</span>
-          <h3>Plants de moringa</h3>
-          <p>Croissance rapide, multiples vertus.</p>
-          <div class="product-price"><strong>1 000 FCFA</strong><span>/ plant</span></div>
-        </div>
-      </article>
+    <div class="grid grid-4" id="featuredGrid">
+      <p style="grid-column:1/-1;text-align:center;color:var(--ink-500);">Chargement des produits…</p>
     </div>
     <div style="text-align:center;margin-top:36px;">
       <a href="catalogue.html" class="btn btn-primary">Voir tout le catalogue</a>
@@ -368,6 +333,9 @@
   <button class="fab fab-top" id="fabTop" aria-label="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 </div>
 
+<script src="js/site-config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/featured.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

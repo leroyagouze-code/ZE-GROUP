@@ -49,8 +49,6 @@
   var form = document.getElementById("contactForm");
   if (form) {
     var successBox = document.getElementById("formSuccess");
-    var WHATSAPP_NUMBER = "22896638200"; // TODO: remplacer par le vrai numéro WhatsApp
-    var CONTACT_EMAIL = "agriwintogo@gmail.com";
 
     function buildMessage(data) {
       var lines = [
@@ -95,12 +93,14 @@
         successBox.scrollIntoView({ behavior: "smooth", block: "center" });
       }
 
+      var settings = window.AGRIWIN_SETTINGS || { email: "agriwintogo@gmail.com", phoneDigits: "22896638200" };
+
       if (action === "email") {
         window.location.href =
-          "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Demande via le site — " + data.subject) +
+          "mailto:" + settings.email + "?subject=" + encodeURIComponent("Demande via le site — " + data.subject) +
           "&body=" + encodeURIComponent(msg);
       } else {
-        window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
+        window.open("https://wa.me/" + settings.phoneDigits + "?text=" + encodeURIComponent(msg), "_blank");
       }
       form.reset();
     });

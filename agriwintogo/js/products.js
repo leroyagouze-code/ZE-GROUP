@@ -178,3 +178,52 @@ window.formatFCFA = function (value) {
     " FCFA"
   );
 };
+
+/* =========================================================
+   Chargement des produits : essaie l'API du serveur (panneau
+   d'administration) et retombe sur la liste statique ci-dessus si le
+   serveur n'est pas lancé — ex. quand le site est ouvert en
+   double-cliquant sur index.html (fichier local, pas de serveur).
+   ========================================================= */
+window.AgriwinLoadProducts = function () {
+  return fetch("api/produits.json")
+    .then(function (res) {
+      if (!res.ok) throw new Error("api indisponible");
+      return res.json();
+    })
+    .catch(function () {
+      return window.AGRIWIN_PRODUCTS;
+    });
+};
+
+function agriwinStockLabel(stock) {
+  return stock === "disponible" ? "En stock" : "Sur commande";
+}
+
+/* Carte produit HTML partagée entre le catalogue et les produits vedettes
+   de la page d'accueil, pour ne pas dupliquer le rendu à deux endroits. */
+window.AgriwinProductCardHTML = function (p) {
+  var settings = window.AGRIWIN_SETTINGS || {};
+  var whatsappNumber = settings.phoneDigits || "22896638200";
+  var waMsg = encodeURIComponent(
+    "Bonjour AgriWin Togo, je suis intéressé(e) par : " + p.name + (p.sku ? " (réf. " + p.sku + ")" : "") + ". Pouvez-vous me donner plus d'informations ?"
+  );
+  return (
+    '<article class="card product-card" data-id="' + p.id + '">' +
+      '<div class="card-media">' +
+        (p.badge ? '<span class="product-badge">' + p.badge + "</span>" : "") +
+        '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy" width="600" height="600">' +
+      "</div>" +
+      '<div class="card-body">' +
+        '<span class="card-tag">' + agriwinStockLabel(p.stock) + "</span>" +
+        "<h3>" + p.name + "</h3>" +
+        "<p>" + p.description + "</p>" +
+        '<div class="product-price"><strong>' + window.formatFCFA(p.price) + "</strong><span>/ " + p.unit + "</span></div>" +
+        '<div class="product-actions">' +
+          '<a class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener" href="https://wa.me/' + whatsappNumber + "?text=" + waMsg + '">Commander</a>' +
+          '<a class="btn btn-outline-green btn-sm" href="contact.html?produit=' + encodeURIComponent(p.name) + '">Demander un devis</a>' +
+        "</div>" +
+      "</div>" +
+    "</article>"
+  );
+};

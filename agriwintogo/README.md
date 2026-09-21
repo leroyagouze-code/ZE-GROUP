@@ -1,102 +1,102 @@
-# Site AgriWin Togo — Phase 1 (vitrine + catalogue)
+# Site AgriWin Togo
 
-Site statique (HTML/CSS/JS, sans framework ni build) pour **AgriWin Togo**,
-livré en **Phase 1** : vitrine complète + catalogue produits consultable,
-sans paiement en ligne.
+Site vitrine + catalogue pour **AgriWin Togo**, avec un serveur optionnel
+qui ajoute un panneau d'administration (gestion des produits et des
+coordonnées sans toucher au code).
 
 ## Structure
 
 ```
 agriwintogo/
-├── index.html          Accueil
-├── a-propos.html        À propos
-├── services.html         Nos services (6 services, ancres #conseil, #prestations, #formation, #ecoulement, #pepiniere, #elevage)
-├── produits.html         Nos produits (présentation des familles)
-├── realisations.html     Nos réalisations (portfolio)
-├── catalogue.html        Catalogue filtrable / recherchable
-├── contact.html          Formulaire + appel + WhatsApp + carte
-├── css/style.css         Charte graphique & styles (mobile-first)
-├── js/main.js            Nav mobile, bouton retour en haut, formulaire de contact
-├── js/products.js        Données produits (structure prête pour un panier en Phase 2)
-├── js/catalogue.js       Filtrage / recherche du catalogue
-├── images/               Logo, favicons, visuels placeholder (SVG)
+├── index.html            Accueil
+├── a-propos.html          À propos
+├── services.html           Nos services (6 services, ancres #conseil, #prestations, #formation, #ecoulement, #pepiniere, #elevage)
+├── produits.html           Nos produits (présentation des familles)
+├── realisations.html       Nos réalisations
+├── catalogue.html          Catalogue filtrable / recherchable
+├── contact.html            Formulaire + appel + WhatsApp + carte
+├── css/style.css           Charte graphique & styles (mobile-first)
+├── js/site-config.js       Coordonnées du site (charge /api/parametres.json si le serveur tourne)
+├── js/products.js          Données produits statiques (repli si le serveur n'est pas lancé)
+├── js/featured.js          Produits vedettes de l'accueil
+├── js/catalogue.js         Filtrage / recherche du catalogue
+├── js/main.js               Nav mobile, bouton retour en haut, formulaire de contact
+├── images/                 Logo, favicons, photos, visuels placeholder (SVG)
 ├── robots.txt, sitemap.xml, site.webmanifest   SEO technique de base
+└── server/                 Serveur Node.js + panneau d'administration (voir server/README.md)
 ```
+
+Le site fonctionne **avec ou sans** le serveur :
+- **Sans serveur** (ouverture directe de `index.html`, ou hébergement
+  statique classique) : tout fonctionne avec les données écrites dans le
+  code (`js/products.js` et les coordonnées par défaut).
+- **Avec le serveur** (`server/`) : les mêmes pages vont chercher les
+  produits et les coordonnées à jour auprès du serveur, ce qui permet de
+  tout modifier depuis `/admin` sans redéployer le code. Voir
+  **`server/README.md`** pour le démarrer et le déployer.
 
 ## Coordonnées réelles (issues du brief créa)
 
 Le numéro de téléphone/WhatsApp (`+228 96 63 82 00`) et l'e-mail
-(`agriwintogo@gmail.com`) sont désormais les vraies coordonnées d'AgriWin
-Togo (KEGNON Emmanuel, CEO), appliquées dans toutes les pages, `js/main.js`
-et `js/catalogue.js`.
+(`agriwintogo@gmail.com`) sont les vraies coordonnées d'AgriWin Togo
+(KEGNON Emmanuel, CEO). Elles peuvent maintenant être changées à tout
+moment depuis `/admin/parametres` une fois le serveur lancé.
 
 ## À remplacer avant mise en ligne définitive
-
-Ces éléments sont des **placeholders clairement identifiés** à remplacer dès
-que le contenu réel sera fourni :
 
 - **Réseaux sociaux** : liens Facebook (`facebook.com/agriwintogo`) et
   TikTok (`tiktok.com/@agriwintogo`) à remplacer par les vraies URLs des
   comptes (le brief indique seulement le nom « AgriWin Togo »).
-- **Photos** : toutes les images sont des visuels SVG générés (vert,
-  clairement annotés « Image à venir »), dans `images/placeholders/`. Il
-  suffit de remplacer les fichiers ou de changer les chemins `src` dans le
-  HTML par de vraies photos (logo, équipe, plants, réalisations).
+- **Photos** : le site mélange des photos réelles libres de droits
+  (`images/photos/`, à remplacer par vos propres photos dès qu'elles
+  seront transmises) et des visuels SVG générés pour les produits et
+  certains services (`images/placeholders/`, clairement annotés « Image à
+  venir »).
 - **Localisation (carte)** : la carte dans `contact.html` utilise des
   coordonnées approximatives pour Kégué — à ajuster avec l'adresse exacte.
-- **Produits et prix** (`js/products.js`) : liste indicative à ajuster avec
-  le vrai catalogue et les prix réels.
+- **Produits et prix** : gérables directement depuis `/admin/produits` une
+  fois le serveur lancé (plus besoin de modifier le code).
 
-## Formulaire de contact (Phase 1, sans backend)
+## Formulaire de contact
 
-Le site n'a pas de serveur/backend. Le formulaire de `contact.html` :
-1. Valide les champs obligatoires côté navigateur.
-2. Construit un message récapitulatif.
-3. L'envoie soit vers WhatsApp (`wa.me`), soit vers le client e-mail du
-   visiteur (`mailto:`), selon le bouton choisi.
+Le formulaire de `contact.html` valide les champs, construit un message
+récapitulatif, puis l'envoie soit vers WhatsApp (`wa.me`), soit vers le
+client e-mail du visiteur (`mailto:`), selon le bouton choisi — aucune
+donnée n'est stockée sur le serveur pour l'instant.
 
-Pour un vrai envoi automatisé sans intervention du visiteur, prévoir en
-évolution rapide un service comme Formspree, EmailJS ou un petit backend
-(PHP/Node) — la structure du formulaire (`id="contactForm"`) est prête à
-être branchée dessus.
+## Panneau d'administration (`server/`)
 
-## Évolution vers la Phase 2 (boutique en ligne)
+Un serveur Node.js optionnel sert le site et ajoute une page privée
+`/admin` où l'équipe AgriWin Togo peut, sans coder :
+- Ajouter / modifier / supprimer des produits (nom, prix, stock, photo,
+  visibilité).
+- Modifier les coordonnées affichées sur tout le site (téléphone,
+  WhatsApp, e-mail, réseaux sociaux, adresse).
+
+Voir **`server/README.md`** pour le démarrer localement et le mettre en
+ligne (Render, VPS, hébergement avec Node.js...).
+
+## Évolution vers une boutique en ligne complète
 
 La structure a été pensée pour évoluer sans réécriture complète :
-
-- Chaque produit dans `js/products.js` possède déjà un `id`, un `sku`, un
-  `price` et un `stock` — il suffira d'ajouter un panier (state JS +
-  `localStorage` ou backend) et un bouton « Ajouter au panier » à côté du
-  bouton WhatsApp actuel dans `js/catalogue.js`.
-- Le catalogue est déjà filtrable/recherchable ; il ne reste qu'à ajouter
-  le tunnel de paiement (T-Money, Flooz/Moov Money) et la gestion des
-  commandes/stocks.
-- Les codes promo pourront être ajoutés comme un champ supplémentaire sur
-  le futur panier, sans impacter les pages existantes.
+- Chaque produit possède déjà un `id`, un `sku`, un `price` et un `stock` —
+  il suffira d'ajouter un panier (state JS + backend) et un bouton
+  « Ajouter au panier » à côté du bouton WhatsApp actuel.
+- Le catalogue est déjà filtrable/recherchable et branché sur un vrai
+  stockage serveur (`server/data/products.json`) ; il reste à ajouter le
+  tunnel de paiement (T-Money, Flooz/Moov Money), la gestion des commandes
+  et les codes promo.
 
 ## Déploiement
 
-Site 100% statique : il peut être déployé tel quel sur n'importe quel
-hébergement statique (GitHub Pages, Netlify, Vercel, hébergement mutualisé
-classique) pointant vers le nom de domaine `agriwintogo.com`. Un fichier
-`CNAME` propre à ce sous-projet devra être ajouté par l'hébergeur choisi
-(ce dépôt héberge déjà un autre site à la racine, avec son propre CNAME
-pour `zegroupafrica.com` — ne pas le modifier).
-
-## Maquette 2 — direction photographique
-
-`maquette-2/index.html` propose une seconde direction visuelle pour la page
-d'accueil : photographie plein cadre (mains en pépinière, plantation,
-marché), portrait + citation du fondateur, bandes photo pleine largeur.
-Les photos utilisées sont des images libres de droits (Pexels), choisies et
-recadrées pour rester cohérentes avec le contexte (pépinière, plants,
-travailleurs africains) et **sans aucune marque tierce visible** — elles
-sont clairement présentées comme des références de style et seront
-remplacées par les vraies photos d'AgriWin Togo (logo, équipe, pépinière)
-dès qu'elles seront transmises. Cette maquette réutilise `css/style.css`
-et n'ajoute qu'une feuille de style complémentaire
-(`maquette-2/css/maquette-2.css`) ; les autres pages (services, produits...)
-pointent encore vers la Maquette 1 le temps de la validation du style.
+- **Site seul (sans admin)** : 100% statique, déployable sur n'importe quel
+  hébergement statique (GitHub Pages, Netlify, Vercel, hébergement
+  mutualisé) pointant vers `agriwintogo.com`. Ce dépôt héberge déjà un
+  autre site à la racine, avec son propre `CNAME` pour `zegroupafrica.com`
+  — ne pas le modifier.
+- **Site + panneau d'administration** : nécessite un hébergement capable de
+  faire tourner Node.js en continu — voir les options détaillées dans
+  `server/README.md`.
 
 ## SEO de base inclus
 
