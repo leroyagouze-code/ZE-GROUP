@@ -17,6 +17,6 @@
     <path d="M0,-18 L0,30 M0,-4 C -12,-4 -18,4 -18,4 M0,10 C 12,10 18,18 18,18"
           stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55"/>
   </g>
-  <text x="50%" y="340.0" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.95">Poussins & volaille</text>
+  <text x="50%" y="340.0" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.95">Poussins &amp; volaille</text>
   <text x="50%" y="367.0" font-family="Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.75">Image à venir — placeholder</text>
 </svg>
