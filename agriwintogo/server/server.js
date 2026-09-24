@@ -14,6 +14,17 @@ const PORT = process.env.PORT || 3000;
 const SITE_ROOT = path.join(__dirname, ".."); // le dossier agriwintogo/ (site statique)
 
 app.disable("x-powered-by");
+app.set("trust proxy", 1); // LWS/Passenger transmet le protocole d'origine (http/https) via un en-tête
+
+// Impose systématiquement "www." devant le nom de domaine
+app.use((req, res, next) => {
+  const host = req.headers.host || "";
+  const isLocal = host.startsWith("localhost") || host.startsWith("127.0.0.1");
+  if (host && !isLocal && !host.startsWith("www.")) {
+    return res.redirect(301, `${req.protocol}://www.${host}${req.originalUrl}`);
+  }
+  next();
+});
 
 app.use(
   session({
