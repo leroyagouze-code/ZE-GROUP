@@ -60,6 +60,11 @@ export const ui = {
     example: 'Exemple',
     mediaSoon: 'Image à venir — tournage dédié',
     videoSoon: 'Vidéo à venir — tournage dédié',
+    play: 'Lire la vidéo',
+    tours: 'Tournées',
+    credit: 'Photo',
+    photosHd: 'Photos HD sur demande, avec l’accord des photographes.',
+    marquee: ['Danse contemporaine', 'Lomé', 'Technique Acogny', 'Danses vodou du Sud', 'Danses du Nord Togo', 'Aské, la lumière', 'Transmission'],
     nextDates: 'Prochaines dates',
     allDates: 'Tout l’agenda',
     noDates: 'Les prochaines dates seront annoncées ici.',
@@ -128,6 +133,11 @@ export const ui = {
     example: 'Example',
     mediaSoon: 'Image coming — dedicated shoot',
     videoSoon: 'Video coming — dedicated shoot',
+    play: 'Play video',
+    tours: 'Tours',
+    credit: 'Photo',
+    photosHd: 'HD photos on request, with the photographers’ consent.',
+    marquee: ['Contemporary dance', 'Lomé', 'Acogny technique', 'Southern vodou dances', 'Northern Togo dances', 'Aské, the light', 'Teaching'],
     nextDates: 'Upcoming dates',
     allDates: 'Full calendar',
     noDates: 'Upcoming dates will be announced here.',
@@ -172,78 +182,137 @@ export const ui = {
   },
 };
 
-// Preuves factuelles (cahier des charges, section 2)
+// Photos trouvées en ligne (presse, 2016–2023). Crédits affichés sous chaque image.
+// ⚠ Autorisations de diffusion à obtenir auprès des auteurs avant la mise en ligne publique.
+// Fichiers : assets/img/<clé>-<largeur>.webp
+export const images = {
+  portrait: {
+    sizes: [[480, 765], [502, 800]],
+    alt: { fr: 'Raouf Tchakondo en studio, en tenue en pagne', en: 'Raouf Tchakondo in the studio, wearing printed wax fabric' },
+    credit: 'Togocultures',
+    url: 'http://togocultures.com/togo-raouf-tchakondo-lhomme-qui-adore-les-danses-geometriques/',
+  },
+  'plage-lome': {
+    sizes: [[480, 335], [800, 558]],
+    alt: { fr: 'Raouf Tchakondo et ses élèves dansent sur la plage de Lomé, sous les cocotiers', en: 'Raouf Tchakondo and his students dancing on the beach in Lomé, under the palm trees' },
+    credit: 'Togocultures',
+    url: 'http://togocultures.com/togo-raouf-tchakondo-lhomme-qui-adore-les-danses-geometriques/',
+  },
+  cours: {
+    sizes: [[480, 320], [800, 533]],
+    alt: { fr: 'Raouf Tchakondo guide un cours, bras ouverts, face à un groupe de danseuses et danseurs', en: 'Raouf Tchakondo leading a class, arms open, facing a group of dancers' },
+    credit: 'Siaka S. Traoré',
+    url: 'http://togocultures.com/togo-raouf-tchakondo-lhomme-qui-adore-les-danses-geometriques/',
+  },
+  'stage-djola': {
+    sizes: [[480, 270], [960, 540]],
+    alt: { fr: 'Stage « Du geste à la danse », 2015 : de jeunes danseurs en mouvement sous un grand préau', en: '“From gesture to dance” workshop, 2015: young dancers moving in a large open-air studio' },
+    credit: 'Raouf Tchakondo / YouTube',
+    url: 'https://www.youtube.com/watch?v=YMk7W4FL3ts',
+  },
+  'isis-antigone': {
+    sizes: [[480, 320], [960, 640]],
+    alt: { fr: 'Isis-Antigone sur scène : une comédienne au centre, danseuse et musiciens autour d’elle', en: 'Isis-Antigone on stage: an actress in the centre, a dancer and musicians around her' },
+    credit: 'Christophe Péan',
+    url: 'https://sceneweb.fr/isis-antigone-ou-la-tragedie-des-corps-disperses-de-kossi-efoui/',
+  },
+  releve: {
+    sizes: [[480, 492], [780, 800]],
+    alt: { fr: 'Une danseuse de la Maison des Artistes Danseurs, bras levés, foulard en kente', en: 'A dancer from the Maison des Artistes Danseurs, arms raised, wearing a kente headscarf' },
+    credit: 'L-FRII',
+    url: 'https://l-frii.com/togo-zoom-sur-ces-4-danseurs-de-la-maison-des-artistes-danseurs/',
+  },
+};
+
+// Vidéos YouTube (chargées seulement au clic, via youtube-nocookie)
+export const videos = {
+  djola: {
+    id: 'YMk7W4FL3ts',
+    poster: 'stage-djola',
+    title: { fr: 'Technique Acogny — extrait « Djola », stage 2015', en: 'Acogny technique — “Djola” excerpt, 2015 workshop' },
+  },
+};
+
+// Preuves factuelles (cahier des charges, section 2, et sources presse)
 export const proofs = {
   fr: [
-    { k: '2011', v: 'Assistant de Germaine Acogny, diplômé de l’École des Sables' },
-    { k: '2005', v: 'Fonde à Lomé la compagnie Aské Danse' },
-    { k: '3 pays', v: 'Formé en Belgique, en France (CND, Pantin) et au Sénégal' },
-    { k: 'Théâtre', v: 'Chorégraphie d’Isis-Antigone, texte de Kossi Efoui' },
+    { k: '2011', v: 'Assistant de Germaine Acogny, à l’École des Sables' },
+    { k: '2005', v: 'Fonde Aské Danse à Lomé. « Aské » : la lumière, en kotokoli' },
+    { k: '18', v: 'danseurs, valides et à mobilité réduite, dans Dansons tous ! (2010)' },
+    { k: '200', v: 'participants pour le spectacle du Cinquantenaire de l’Indépendance du Togo' },
   ],
   en: [
-    { k: '2011', v: 'Assistant to Germaine Acogny, graduate of École des Sables' },
-    { k: '2005', v: 'Founded the Aské Danse company in Lomé' },
-    { k: '3 countries', v: 'Trained in Belgium, France (CND, Pantin) and Senegal' },
-    { k: 'Theatre', v: 'Choreography for Isis-Antigone, text by Kossi Efoui' },
+    { k: '2011', v: 'Assistant to Germaine Acogny at École des Sables' },
+    { k: '2005', v: 'Founds Aské Danse in Lomé. “Aské” means light in Kotokoli' },
+    { k: '18', v: 'dancers, able-bodied and with reduced mobility, in Dansons tous ! (2010)' },
+    { k: '200', v: 'participants in the show for Togo’s 50th anniversary of Independence' },
   ],
 };
 
 export const bio = {
   fr: {
     short:
-      'Raouf Tchakondo est danseur, chorégraphe et pédagogue, né à Lomé. Formé au sein de la Sojaf, puis auprès de Motra et d’Harold George, il poursuit sa formation en Belgique avec Nyanga Zam, au Centre national de la danse à Pantin et à l’École des Sables au Sénégal. Il fonde la compagnie Aské Danse en 2005. Depuis 2011, il est l’assistant de Germaine Acogny. Son écriture relie la géométrie du corps aux danses vodou du Sud et aux danses traditionnelles du Nord Togo.',
+      'Raouf Tchakondo est danseur, chorégraphe et pédagogue, né à Lomé. Il découvre la danse en 1998 avec la Sojaf, rejoint la compagnie Henry Motra, puis danse en Europe pour Harold George. Formé en Belgique, au Centre national de la danse à Pantin et à l’École des Sables, il est l’assistant de Germaine Acogny depuis 2011. En 2005, il fonde Aské Danse. Son écriture relie la géométrie du corps aux danses vodou du Sud et aux danses du Nord Togo.',
     long: [
-      'Raouf Tchakondo naît à Lomé. Il commence la danse à la fin des années 1990 au sein de la Sojaf. Sa formation passe ensuite par Motra et par Harold George, avant de le conduire vers Germaine Acogny.',
-      'En 2003, il se forme en Belgique avec Nyanga Zam. En 2009, il suit une formation au Centre national de la danse, à Pantin. Au Sénégal, il est diplômé de l’École des Sables, le centre fondé par Germaine Acogny à Toubab Dialaw. Il en devient l’assistant en 2011.',
-      'En 2005, il fonde à Lomé la compagnie Aské Danse. La compagnie crée, tourne et forme. Elle accompagne une nouvelle génération de danseurs, de la Maison des Artistes Danseurs au collectif Street Kings.',
-      'Son écriture part de figures géométriques : le cercle, le triangle, le losange. Il les nourrit des danses vodou du Sud du Togo et des danses traditionnelles du Nord — Adjogbo, Hébiésso, Gadao, Kondona — et de la technique Acogny.',
-      'Ses pièces — Kébia et Kola, Nalè et Essime, Dansons tous !, L’Œil, Elle et Lui — ont circulé en Afrique de l’Ouest et en Europe. Dansons tous ! réunit des danseurs valides et des danseurs à mobilité réduite. Pour le théâtre, il signe la chorégraphie d’Isis-Antigone, sur un texte de Kossi Efoui.',
+      'Raouf Tchakondo naît à Lomé et grandit dans le quartier Saint-Joseph, entre vodou, christianisme et islam. À 18 ans, en 1998, il découvre la danse moderne avec la compagnie Sojaf et se forme à l’École de danse traditionnelle, moderne et classique de Lomé.',
+      'En 2001, il rejoint la compagnie Henry Motra et se tourne vers la danse contemporaine. À partir de 2003, il travaille avec le chorégraphe sierra-léonais Harold George. Ses pièces le conduisent en Belgique et en tournée dans plusieurs pays d’Europe.',
+      'En 2005, il fonde à Lomé la compagnie Aské Danse. « Aské » signifie « lumière » en kotokoli. De 2005 à 2007, il enseigne au Collège régional d’artistes de Dapaong, dans le Nord du pays.',
+      'Il se forme ensuite à l’École des Sables, au Sénégal, et au Centre national de la danse, à Pantin (2009). Depuis 2011, il assiste Germaine Acogny dans la transmission de sa technique.',
+      'Son écriture part des figures géométriques : « L’élément de base, c’est l’orientation que tu donnes au corps dans l’espace en se calquant sur les figures géométriques : cercles, triangles, losanges, carrés. » Il la nourrit des danses vodou du Sud et des danses traditionnelles du Nord Togo.',
+      'Ses pièces parlent du monde : l’esclavage moderne, l’amour, l’eldorado et l’immigration, l’égalité malgré le handicap, la nécessité de s’unir. Kébia et Kola (2008), Nalè et Essime (2009), Dansons tous ! (2010, 18 danseurs valides et à mobilité réduite), L’Œil (2013, joué au Bénin et en Côte d’Ivoire). En 2010, il signe le spectacle du Cinquantenaire de l’Indépendance du Togo, avec 200 participants. Pour le théâtre, il collabore à la chorégraphie d’Isis-Antigone, de Kossi Efoui.',
     ],
   },
   en: {
     short:
-      'Raouf Tchakondo is a dancer, choreographer and teacher born in Lomé, Togo. He trained with Sojaf, then with Motra and Harold George, before continuing in Belgium with Nyanga Zam, at the Centre national de la danse in Pantin, France, and at École des Sables in Senegal. He founded the Aské Danse company in 2005. Since 2011 he has been assistant to Germaine Acogny. His work connects the geometry of the body with the vodou dances of southern Togo and the traditional dances of the north.',
+      'Raouf Tchakondo is a dancer, choreographer and teacher born in Lomé, Togo. He discovered dance in 1998 with Sojaf, joined the Henry Motra company, then danced in Europe for Harold George. Trained in Belgium, at the Centre national de la danse in Pantin and at École des Sables, he has been assistant to Germaine Acogny since 2011. In 2005 he founded Aské Danse. His work connects the geometry of the body with the vodou dances of southern Togo and the dances of the north.',
     long: [
-      'Raouf Tchakondo was born in Lomé. He began dancing in the late 1990s with Sojaf. His training then led him to Motra and Harold George, and on to Germaine Acogny.',
-      'In 2003 he trained in Belgium with Nyanga Zam. In 2009 he studied at the Centre national de la danse in Pantin, France. In Senegal he graduated from École des Sables, the centre founded by Germaine Acogny in Toubab Dialaw. He became her assistant in 2011.',
-      'In 2005 he founded the Aské Danse company in Lomé. The company creates, tours and trains. It supports a new generation of dancers, from the Maison des Artistes Danseurs to the Street Kings collective.',
-      'His choreographic writing starts from geometric figures: the circle, the triangle, the diamond. He feeds them with the vodou dances of southern Togo and the traditional dances of the north — Adjogbo, Hébiésso, Gadao, Kondona — and with the Acogny technique.',
-      'His pieces — Kébia et Kola, Nalè et Essime, Dansons tous !, L’Œil, Elle et Lui — have travelled across West Africa and Europe. Dansons tous ! brings together able-bodied dancers and dancers with reduced mobility. For the theatre, he choreographed Isis-Antigone, from a text by Kossi Efoui.',
+      'Raouf Tchakondo was born in Lomé and grew up in the Saint-Joseph neighbourhood, between vodou, Christianity and Islam. In 1998, aged 18, he discovered modern dance with the Sojaf company and trained at the School of Traditional, Modern and Classical Dance in Lomé.',
+      'In 2001 he joined the Henry Motra company and turned to contemporary dance. From 2003 he worked with Sierra Leonean choreographer Harold George. Those pieces took him to Belgium and on tour across Europe.',
+      'In 2005 he founded the Aské Danse company in Lomé. “Aské” means “light” in Kotokoli. From 2005 to 2007 he taught at the Regional College of Artists in Dapaong, in the north of the country.',
+      'He went on to train at École des Sables in Senegal and at the Centre national de la danse in Pantin (2009). Since 2011 he has assisted Germaine Acogny in teaching her technique.',
+      'His writing starts from geometric figures: “The basic element is the orientation you give the body in space, modelled on geometric figures: circles, triangles, diamonds, squares.” He feeds it with the vodou dances of the South and the traditional dances of northern Togo.',
+      'His pieces speak about the world: modern slavery, love, the promised land and immigration, equality despite disability, the need to unite. Kébia et Kola (2008), Nalè et Essime (2009), Dansons tous ! (2010, 18 able-bodied dancers and dancers with reduced mobility), L’Œil (2013, performed in Benin and Côte d’Ivoire). In 2010 he created the show for Togo’s 50th anniversary of Independence, with 200 participants. For the theatre, he collaborated on the choreography of Isis-Antigone by Kossi Efoui.',
     ],
   },
 };
 
-// Frise 1998 → 2026
+// Frise 1998 → 2026 (sources : Africultures, Togocultures)
 export const timeline = [
-  { year: '1998', place: 'Lomé', fr: 'Premiers pas de danseur au sein de la Sojaf.', en: 'First steps as a dancer with Sojaf.' },
-  { year: '2003', place: 'Belgique', placeEn: 'Belgium', fr: 'Formation avec Nyanga Zam.', en: 'Training with Nyanga Zam.' },
-  { year: '2005', place: 'Lomé', fr: 'Fonde la compagnie Aské Danse.', en: 'Founds the Aské Danse company.' },
-  { year: '2009', place: 'Pantin', fr: 'Formation au Centre national de la danse.', en: 'Training at the Centre national de la danse.' },
-  { year: '2011', place: 'Toubab Dialaw', fr: 'École des Sables. Devient l’assistant de Germaine Acogny.', en: 'École des Sables. Becomes assistant to Germaine Acogny.' },
-  { year: '2026', place: 'Lomé', fr: 'Aské Danse crée, tourne et forme la relève.', en: 'Aské Danse creates, tours and trains the next generation.' },
+  { year: '1998', place: 'Lomé', color: 'sun', fr: 'Découvre la danse moderne avec la Sojaf. École de danse traditionnelle, moderne et classique.', en: 'Discovers modern dance with Sojaf. School of Traditional, Modern and Classical Dance.' },
+  { year: '2001', place: 'Lomé', color: 'ochre', fr: 'Rejoint la compagnie Henry Motra. Cap sur la danse contemporaine.', en: 'Joins the Henry Motra company. Turns to contemporary dance.' },
+  { year: '2003', place: 'Belgique', placeEn: 'Belgium', color: 'indigo', fr: 'Danse pour Harold George. Tournées en Europe.', en: 'Dances for Harold George. Tours in Europe.' },
+  { year: '2005', place: 'Lomé · Dapaong', color: 'terracotta', fr: 'Fonde Aské Danse, « la lumière ». Enseigne à Dapaong jusqu’en 2007.', en: 'Founds Aské Danse, “the light”. Teaches in Dapaong until 2007.' },
+  { year: '2008', place: 'Lomé', color: 'sun', fr: 'Crée Kébia et Kola. Premières formations à l’École des Sables.', en: 'Creates Kébia et Kola. First training at École des Sables.' },
+  { year: '2009', place: 'Pantin', color: 'indigo', fr: 'Centre national de la danse. Crée Nalè et Essime.', en: 'Centre national de la danse. Creates Nalè et Essime.' },
+  { year: '2010', place: 'Lomé', color: 'terracotta', fr: 'Dansons tous !, 18 danseurs. Spectacle du Cinquantenaire, 200 participants.', en: 'Dansons tous !, 18 dancers. 50th Independence anniversary show, 200 participants.' },
+  { year: '2011', place: 'Toubab Dialaw', color: 'ochre', fr: 'Devient l’assistant de Germaine Acogny.', en: 'Becomes assistant to Germaine Acogny.' },
+  { year: '2013', place: 'Bénin · Côte d’Ivoire', placeEn: 'Benin · Côte d’Ivoire', color: 'sun', fr: 'L’Œil en tournée.', en: 'L’Œil on tour.' },
+  { year: '2026', place: 'Lomé', color: 'terracotta', fr: 'Aské Danse crée, tourne et forme la relève.', en: 'Aské Danse creates, tours and trains the next generation.' },
 ];
 
-export const lineage = ['Sojaf', 'Motra', 'Harold George', 'Germaine Acogny'];
+export const lineage = ['Sojaf', 'Henry Motra', 'Harold George', 'Germaine Acogny'];
 
-// Carte : lieux de formation et de tournée. `year: null` = date à confirmer.
+// Carte : lieux de formation, d'enseignement et de tournée. `year: null` = date à confirmer.
 export const places = [
   { name: 'Lomé', lon: 1.23, lat: 6.13, year: 1998, kind: 'base', label: 'below' },
-  { name: 'Bruxelles', nameEn: 'Brussels', lon: 4.35, lat: 50.85, year: 2003, kind: 'formation' },
+  { name: 'Belgique', nameEn: 'Belgium', lon: 4.35, lat: 50.85, year: 2003, kind: 'formation' },
+  { name: 'Dapaong', lon: 0.21, lat: 10.86, year: 2005, kind: 'formation', label: 'left' },
+  { name: 'Toubab Dialaw', lon: -17.14, lat: 14.6, year: 2008, kind: 'formation' },
   { name: 'Pantin', lon: 2.41, lat: 48.89, year: 2009, kind: 'formation' },
-  { name: 'Toubab Dialaw', lon: -17.14, lat: 14.6, year: 2011, kind: 'formation' },
-  { name: 'Cotonou', lon: 2.42, lat: 6.37, year: null, kind: 'tournee', label: 'above' },
-  { name: 'Abidjan', lon: -4.01, lat: 5.36, year: null, kind: 'tournee', label: 'left' },
+  { name: 'Bénin', nameEn: 'Benin', lon: 2.42, lat: 6.37, year: 2013, kind: 'tournee', label: 'above' },
+  { name: 'Côte d’Ivoire', lon: -4.01, lat: 5.36, year: 2013, kind: 'tournee', label: 'left' },
 ];
 
 // Répertoire. Les champs null sont à compléter avec la compagnie.
-// `shape` : forme géométrique propre à chaque pièce (direction artistique).
+// `shape` : forme géométrique propre à chaque pièce ; `color` : couleur de la vignette.
 export const creations = [
   {
     slug: 'kebia-et-kola',
     title: 'Kébia et Kola',
     shape: 'circle',
+    color: 'ochre',
     format: null,
-    year: null,
+    year: '2008',
     duration: null,
     cast: null,
     featured: true,
@@ -253,41 +322,45 @@ export const creations = [
     slug: 'nale-et-essime',
     title: 'Nalè et Essime',
     shape: 'losange',
+    color: 'indigo',
     format: null,
-    year: null,
+    year: '2009',
     duration: null,
     cast: null,
-    featured: true,
     synopsis: { fr: null, en: null },
   },
   {
     slug: 'dansons-tous',
     title: 'Dansons tous !',
     shape: 'hexagon',
+    color: 'terracotta',
     format: 'groupe',
-    year: null,
+    year: '2010',
     duration: null,
-    cast: null,
+    cast: { fr: '18 danseurs, valides et à mobilité réduite', en: '18 dancers, able-bodied and with reduced mobility' },
     featured: true,
     synopsis: {
-      fr: 'Une pièce pour danseurs valides et danseurs à mobilité réduite. Un même plateau, une même écriture.',
-      en: 'A piece for able-bodied dancers and dancers with reduced mobility. One stage, one choreographic language.',
+      fr: 'Dix-huit danseurs, valides et à mobilité réduite, sur un même plateau. Une pièce sur l’égalité malgré le handicap. Créée à Lomé en 2010.',
+      en: 'Eighteen dancers, able-bodied and with reduced mobility, on one stage. A piece about equality despite disability. Premiered in Lomé in 2010.',
     },
   },
   {
     slug: 'l-oeil',
     title: 'L’Œil',
     shape: 'eye',
+    color: 'sun',
     format: null,
-    year: null,
+    year: '2013',
     duration: null,
     cast: null,
+    tours: { fr: 'Bénin, Côte d’Ivoire', en: 'Benin, Côte d’Ivoire' },
     synopsis: { fr: null, en: null },
   },
   {
     slug: 'elle-et-lui',
     title: 'Elle et Lui',
     shape: 'triangle',
+    color: 'indigo',
     format: null,
     year: null,
     duration: null,
@@ -298,13 +371,19 @@ export const creations = [
     slug: 'isis-antigone',
     title: 'Isis-Antigone',
     shape: 'square',
+    color: 'terracotta',
+    image: 'isis-antigone',
     format: 'theatre',
-    year: null,
+    year: '2023',
     duration: null,
-    cast: null,
+    featured: true,
+    cast: {
+      fr: 'Texte : Kossi Efoui. Mise en scène : Gaëtan Noussouglo et Marcel Djondo. Collaboration chorégraphique : Raouf Tchakondo. Avec Florisse Adjanohoun, Roger Kodjo Atikpo, Anani Gbeteglo, Bowokabati Eustache Kamouna, Odile Sankara, Béno Kokou Sanvee.',
+      en: 'Text: Kossi Efoui. Directed by Gaëtan Noussouglo and Marcel Djondo. Choreographic collaboration: Raouf Tchakondo. With Florisse Adjanohoun, Roger Kodjo Atikpo, Anani Gbeteglo, Bowokabati Eustache Kamouna, Odile Sankara, Béno Kokou Sanvee.',
+    },
     synopsis: {
-      fr: 'Chorégraphie pour la pièce de théâtre de Kossi Efoui.',
-      en: 'Choreography for Kossi Efoui’s play.',
+      fr: 'Comme Antigone, Isis cherche les morceaux dispersés du corps de son frère et époux Osiris. Le spectacle part des corps dispersés et du deuil impossible, une notion présente dans les rituels togolais.',
+      en: 'Like Antigone, Isis searches for the scattered pieces of her brother and husband Osiris. The show starts from scattered bodies and impossible mourning, a notion found in Togolese rituals.',
     },
   },
 ];
@@ -399,6 +478,11 @@ export const agenda = [
   },
 ];
 
+export const quote = {
+  fr: 'L’élément de base, c’est l’orientation que tu donnes au corps dans l’espace en se calquant sur les figures géométriques : cercles, triangles, losanges, carrés.',
+  en: 'The basic element is the orientation you give the body in space, modelled on geometric figures: circles, triangles, diamonds, squares.',
+};
+
 export const pages = {
   fr: {
     home: {
@@ -423,6 +507,15 @@ export const pages = {
       ],
       placesTitle: 'Lieux de formation',
       placesNote: 'Logos partenaires : autorisations en cours.',
+      lightKicker: 'Aské Danse',
+      lightTitle: 'Aské, en kotokoli, c’est la lumière.',
+      lightText: 'Depuis 2005, la compagnie crée, tourne et forme à Lomé une nouvelle génération de danseurs.',
+      lightCta: 'Découvrir la compagnie',
+      galleryTitle: 'En mouvement',
+      galleryText: 'Sur la plage de Lomé, en studio, sur scène. Là où il danse, il transmet.',
+      videoTitle: 'Le voir transmettre',
+      videoText: 'Stage « Du geste à la danse. Le danseur interprète », 2015. Extrait « Djola ».',
+      quoteSrc: 'Raouf Tchakondo, Togocultures, 2016',
     },
     bio: {
       title: 'Biographie',
@@ -437,7 +530,7 @@ export const pages = {
     creations: {
       title: 'Créations',
       description: 'Le répertoire de Raouf Tchakondo et d’Aské Danse : Kébia et Kola, Nalè et Essime, Dansons tous !, L’Œil, Elle et Lui, Isis-Antigone.',
-      lead: 'Quinze ans d’écriture. Chaque pièce a sa forme.',
+      lead: 'Depuis 2008, une écriture qui parle du monde. Chaque pièce a sa forme.',
     },
     langage: {
       title: 'Le langage',
@@ -451,13 +544,14 @@ export const pages = {
       moduleTitle: 'Les sources',
       moduleHint: 'Choisissez une danse pour voir sa figure.',
       interview: 'Entretien — le langage chorégraphique (sous-titré FR / EN)',
+      videoTitle: 'La technique Acogny, transmise par Raouf',
     },
     aske: {
       title: 'Aské Danse',
       description: 'Aské Danse, compagnie de danse contemporaine fondée à Lomé en 2005 par Raouf Tchakondo. Répertoire, danseurs, recrutement.',
       lead: 'Compagnie fondée à Lomé en 2005. Elle crée, tourne et forme.',
       history: [
-        'Aské Danse naît à Lomé en 2005. Raouf Tchakondo la fonde pour porter ses créations et pour former des danseurs.',
+        'Aské Danse naît à Lomé en 2005. « Aské » signifie « lumière » en kotokoli. Raouf Tchakondo la fonde pour porter ses créations et pour former des danseurs.',
         'La compagnie accompagne une nouvelle génération : les danseurs de la Maison des Artistes Danseurs, le collectif Street Kings.',
         'Ses interprètes sont un vivier professionnel pour les festivals, les théâtres et les productions de la région.',
       ],
@@ -480,7 +574,7 @@ export const pages = {
       offers: [
         { t: 'Stages', d: 'Plusieurs jours de travail intensif. Technique, répertoire, écriture.' },
         { t: 'Masterclasses', d: 'Une ou deux journées, en festival ou en institution.' },
-        { t: 'Cours en ligne', d: 'Technique Acogny, bases. Bientôt disponibles.' },
+        { t: 'Cours en ligne', d: 'Il a déjà enseigné en direct pour les « Mercredis de danse » de l’École des Sables. Cours vidéo à venir.' },
       ],
       agendaTitle: 'Agenda des stages',
       formTitle: 'Inscription',
@@ -504,13 +598,17 @@ export const pages = {
       description: 'Chorégraphie pour le théâtre, les clips, les marques et les événements. Envoyez votre brief à Raouf Tchakondo.',
       lead: 'Théâtre, clips, marques, événements. Une écriture reconnaissable, au service d’un projet.',
       fields: [
-        { t: 'Théâtre', d: 'Chorégraphie d’Isis-Antigone, texte de Kossi Efoui.' },
+        { t: 'Théâtre', d: 'Isis-Antigone, de Kossi Efoui : collaboration chorégraphique.' },
         { t: 'Clips', d: 'Chorégraphie et direction de danseurs pour la musique.' },
         { t: 'Marques', d: 'Lancements, films, activations.' },
-        { t: 'Événements', d: 'Cérémonies, ouvertures, créations in situ.' },
+        { t: 'Événements', d: 'Cérémonies, ouvertures, grands formats : le Cinquantenaire, 200 participants.' },
       ],
-      casesTitle: 'Études de cas',
-      casesNote: 'Avant / après — à documenter avec les premiers projets.',
+      casesTitle: 'Références',
+      casesNote: '',
+      cases: [
+        { t: 'Isis-Antigone', k: 'Théâtre · 2023', d: 'Collaboration chorégraphique pour la pièce de Kossi Efoui, mise en scène par Gaëtan Noussouglo et Marcel Djondo.', image: 'isis-antigone', to: 'isis-antigone' },
+        { t: 'Cinquantenaire de l’Indépendance', k: 'Événement · Lomé · 2010', d: 'Le spectacle des 50 ans de l’Indépendance du Togo. 200 participants.', color: 'sun' },
+      ],
       briefTitle: 'Votre brief',
     },
     presse: {
@@ -525,11 +623,13 @@ export const pages = {
       bioLong: 'Bio longue',
       articlesTitle: 'Ils en parlent',
       articles: [
-        { src: 'Togocultures', t: 'Portrait de Raouf Tchakondo', y: '2016' },
-        { src: 'Africultures', t: 'Fiche Raouf Tchakondo', y: null },
-        { src: 'Numeridanse', t: 'Profil', y: null },
-        { src: 'Sceneweb', t: 'Isis-Antigone de Kossi Efoui', y: null },
+        { src: 'Togocultures', t: 'Raouf Tchakondo, l’homme qui adore les danses géométriques — Gaëtan Noussouglo', y: '2016', url: 'http://togocultures.com/togo-raouf-tchakondo-lhomme-qui-adore-les-danses-geometriques/' },
+        { src: 'Africultures', t: 'Fiche Raouf Tchakondo', y: null, url: 'http://africultures.com/personnes/?no=8584' },
+        { src: 'Sceneweb', t: 'Isis-Antigone ou la tragédie des corps dispersés, de Kossi Efoui', y: '2023', url: 'https://sceneweb.fr/isis-antigone-ou-la-tragedie-des-corps-disperses-de-kossi-efoui/' },
+        { src: 'L-FRII', t: 'Zoom sur 4 danseurs de la Maison des Artistes Danseurs', y: '2022', url: 'https://l-frii.com/togo-zoom-sur-ces-4-danseurs-de-la-maison-des-artistes-danseurs/' },
+        { src: 'YouTube', t: 'Technique Acogny by Raouf Tchakondo', y: '2015', url: 'https://www.youtube.com/watch?v=YMk7W4FL3ts' },
       ],
+      creditsTitle: 'Crédits photo',
       contactTitle: 'Contact presse',
     },
     contact: {
@@ -574,6 +674,15 @@ export const pages = {
       ],
       placesTitle: 'Where he trained',
       placesNote: 'Partner logos: permissions in progress.',
+      lightKicker: 'Aské Danse',
+      lightTitle: 'In Kotokoli, Aské means light.',
+      lightText: 'Since 2005 the company has created, toured and trained a new generation of dancers in Lomé.',
+      lightCta: 'Discover the company',
+      galleryTitle: 'In motion',
+      galleryText: 'On the beach in Lomé, in the studio, on stage. Wherever he dances, he teaches.',
+      videoTitle: 'Watch him teach',
+      videoText: '“From gesture to dance. The dancer as interpreter” workshop, 2015. “Djola” excerpt.',
+      quoteSrc: 'Raouf Tchakondo, Togocultures, 2016',
     },
     bio: {
       title: 'Biography',
@@ -588,7 +697,7 @@ export const pages = {
     creations: {
       title: 'Works',
       description: 'The repertoire of Raouf Tchakondo and Aské Danse: Kébia et Kola, Nalè et Essime, Dansons tous !, L’Œil, Elle et Lui, Isis-Antigone.',
-      lead: 'Fifteen years of writing. Each piece has its own shape.',
+      lead: 'Since 2008, a body of work that speaks about the world. Each piece has its own shape.',
     },
     langage: {
       title: 'The language',
@@ -602,13 +711,14 @@ export const pages = {
       moduleTitle: 'The sources',
       moduleHint: 'Choose a dance to see its figure.',
       interview: 'Interview — the choreographic language (FR / EN subtitles)',
+      videoTitle: 'The Acogny technique, taught by Raouf',
     },
     aske: {
       title: 'Aské Danse',
       description: 'Aské Danse, contemporary dance company founded in Lomé in 2005 by Raouf Tchakondo. Repertoire, dancers, auditions.',
       lead: 'A company founded in Lomé in 2005. It creates, tours and trains.',
       history: [
-        'Aské Danse was born in Lomé in 2005. Raouf Tchakondo founded it to carry his works and to train dancers.',
+        'Aské Danse was born in Lomé in 2005. “Aské” means “light” in Kotokoli. Raouf Tchakondo founded it to carry his works and to train dancers.',
         'The company supports a new generation: the dancers of the Maison des Artistes Danseurs, the Street Kings collective.',
         'Its performers are a professional talent pool for festivals, theatres and productions across the region.',
       ],
@@ -631,7 +741,7 @@ export const pages = {
       offers: [
         { t: 'Workshops', d: 'Several days of intensive work. Technique, repertoire, writing.' },
         { t: 'Masterclasses', d: 'One or two days, at festivals or institutions.' },
-        { t: 'Online classes', d: 'Acogny technique, foundations. Coming soon.' },
+        { t: 'Online classes', d: 'He has already taught live for École des Sables’ “Dance Wednesdays”. Video classes coming soon.' },
       ],
       agendaTitle: 'Workshop calendar',
       formTitle: 'Registration',
@@ -655,13 +765,17 @@ export const pages = {
       description: 'Choreography for theatre, music videos, brands and events. Send your brief to Raouf Tchakondo.',
       lead: 'Theatre, music videos, brands, events. A recognisable language, at the service of a project.',
       fields: [
-        { t: 'Theatre', d: 'Choreography for Isis-Antigone, text by Kossi Efoui.' },
+        { t: 'Theatre', d: 'Isis-Antigone by Kossi Efoui: choreographic collaboration.' },
         { t: 'Music videos', d: 'Choreography and dancer direction for music.' },
         { t: 'Brands', d: 'Launches, films, activations.' },
-        { t: 'Events', d: 'Ceremonies, openings, site-specific pieces.' },
+        { t: 'Events', d: 'Ceremonies, openings, large formats: the 50th anniversary show, 200 participants.' },
       ],
-      casesTitle: 'Case studies',
-      casesNote: 'Before / after — to be documented with the first projects.',
+      casesTitle: 'References',
+      casesNote: '',
+      cases: [
+        { t: 'Isis-Antigone', k: 'Theatre · 2023', d: 'Choreographic collaboration on Kossi Efoui’s play, directed by Gaëtan Noussouglo and Marcel Djondo.', image: 'isis-antigone', to: 'isis-antigone' },
+        { t: '50th anniversary of Independence', k: 'Event · Lomé · 2010', d: 'The show for Togo’s 50th anniversary of Independence. 200 participants.', color: 'sun' },
+      ],
       briefTitle: 'Your brief',
     },
     presse: {
@@ -676,11 +790,13 @@ export const pages = {
       bioLong: 'Long bio',
       articlesTitle: 'Coverage',
       articles: [
-        { src: 'Togocultures', t: 'Portrait of Raouf Tchakondo', y: '2016' },
-        { src: 'Africultures', t: 'Raouf Tchakondo profile', y: null },
-        { src: 'Numeridanse', t: 'Profile', y: null },
-        { src: 'Sceneweb', t: 'Isis-Antigone by Kossi Efoui', y: null },
+        { src: 'Togocultures', t: 'Raouf Tchakondo, the man who loves geometric dances — Gaëtan Noussouglo (FR)', y: '2016', url: 'http://togocultures.com/togo-raouf-tchakondo-lhomme-qui-adore-les-danses-geometriques/' },
+        { src: 'Africultures', t: 'Raouf Tchakondo profile (FR)', y: null, url: 'http://africultures.com/personnes/?no=8584' },
+        { src: 'Sceneweb', t: 'Isis-Antigone by Kossi Efoui (FR)', y: '2023', url: 'https://sceneweb.fr/isis-antigone-ou-la-tragedie-des-corps-disperses-de-kossi-efoui/' },
+        { src: 'L-FRII', t: 'Four dancers of the Maison des Artistes Danseurs (FR)', y: '2022', url: 'https://l-frii.com/togo-zoom-sur-ces-4-danseurs-de-la-maison-des-artistes-danseurs/' },
+        { src: 'YouTube', t: 'Technique Acogny by Raouf Tchakondo', y: '2015', url: 'https://www.youtube.com/watch?v=YMk7W4FL3ts' },
       ],
+      creditsTitle: 'Photo credits',
       contactTitle: 'Press contact',
     },
     contact: {

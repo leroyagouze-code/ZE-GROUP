@@ -21,11 +21,11 @@
   var themeBtn = $('[data-theme-toggle]');
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
-      var next = doc.dataset.theme === 'light' ? 'dark' : 'light';
+      var next = doc.dataset.theme === 'dark' ? 'light' : 'dark';
       doc.dataset.theme = next;
       store.set('rt-theme', next);
       var meta = $('meta[name="theme-color"]');
-      if (meta) meta.content = next === 'light' ? '#f2ede4' : '#0d0c0b';
+      if (meta) meta.content = next === 'dark' ? '#1c130e' : '#f7ecdc';
     });
   }
 
@@ -160,12 +160,12 @@
       out.textContent = y;
       cities.forEach(function (c) {
         var cy = c.getAttribute('data-year');
-        var on = cy ? +cy <= y : tours.checked;
+        var on = cy ? +cy <= y : !tours || tours.checked;
         c.classList.toggle('on', on);
       });
     };
     range.addEventListener('input', update);
-    tours.addEventListener('change', update);
+    if (tours) tours.addEventListener('change', update);
     update();
     // Les villes s'allument par année quand la carte entre à l'écran
     if (!calm && 'IntersectionObserver' in window) {
@@ -318,6 +318,22 @@
       location.href = 'mailto:' + f.getAttribute('data-to') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
       var st = $('.form-status', f);
       if (st) st.textContent = st.getAttribute('data-sent');
+    });
+  });
+
+  // ---------- vidéos : l'iframe YouTube n'est chargée qu'au clic ----------
+  $$('[data-yt]').forEach(function (box) {
+    var btn = $('.play', box);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0&hl=' + lang;
+      f.title = box.getAttribute('data-title');
+      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      box.innerHTML = '';
+      box.appendChild(f);
+      f.focus();
     });
   });
 
