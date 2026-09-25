@@ -53,7 +53,7 @@ export const ui = {
       presse: 'Presse',
       contact: 'Contact & booking',
     },
-    role: 'Danseur · Chorégraphe · Pédagogue',
+    role: 'Danseur · Chorégraphe · Professeur',
     signature: ['Le corps comme géométrie.', 'Les racines comme langage.'],
     preview: 'Préproduction — textes, dates et médias en cours de validation. Les éléments marqués « Exemple » sont fictifs.',
     todo: 'À confirmer',
@@ -186,6 +186,44 @@ export const ui = {
 // ⚠ Autorisations de diffusion à obtenir auprès des auteurs avant la mise en ligne publique.
 // Fichiers : assets/img/<clé>-<largeur>.webp
 export const images = {
+  // Photos transmises par Raouf Tchakondo (2026)
+  sable: {
+    sizes: [[480, 360], [960, 720], [1280, 960]],
+    alt: { fr: 'Raouf Tchakondo, pantalon rouge, mène un cours sur le sable, poings levés, suivi par ses élèves', en: 'Raouf Tchakondo, in red trousers, leads a class on the sand, fists raised, followed by his students' },
+    credit: 'DR',
+    provided: true,
+  },
+  'sable-carre': {
+    sizes: [[480, 480], [800, 800]],
+    alt: { fr: 'Raouf Tchakondo, pantalon rouge, poings levés, mène un cours sur le sable', en: 'Raouf Tchakondo, in red trousers, fists raised, leading a class on the sand' },
+    credit: 'DR',
+    provided: true,
+    hidden: true,
+  },
+  'loose-control': {
+    sizes: [[480, 320], [960, 640]],
+    alt: { fr: 'Raouf Tchakondo en plein mouvement au premier plan, un grand groupe de danseurs derrière lui, à l’École des Sables', en: 'Raouf Tchakondo mid-movement in the foreground, a large group of dancers behind him, at École des Sables' },
+    credit: 'Siaka S. Traoré',
+    provided: true,
+  },
+  joie: {
+    sizes: [[480, 320], [960, 640]],
+    alt: { fr: 'Des danseuses et danseurs, bras ouverts, rient en traversant le studio pendant un cours', en: 'Dancers, arms wide open, laughing as they cross the studio during a class' },
+    credit: 'Siaka S. Traoré',
+    provided: true,
+  },
+  atelier: {
+    sizes: [[480, 320], [960, 640]],
+    alt: { fr: 'Raouf Tchakondo, concentré, avance devant le groupe pendant un atelier', en: 'Raouf Tchakondo, focused, moves ahead of the group during a workshop' },
+    credit: 'Siaka S. Traoré',
+    provided: true,
+  },
+  tente: {
+    sizes: [[480, 269], [960, 538], [1280, 718]],
+    alt: { fr: 'Cours au sol sur le sable, sous une grande tente jaune : une danseuse tourne le buste, main sur l’épaule', en: 'Floor class on the sand under a large yellow tent: a dancer twists her torso, hand on her shoulder' },
+    credit: 'DR',
+    provided: true,
+  },
   portrait: {
     sizes: [[480, 765], [502, 800]],
     alt: { fr: 'Raouf Tchakondo en studio, en tenue en pagne', en: 'Raouf Tchakondo in the studio, wearing printed wax fabric' },
@@ -236,13 +274,13 @@ export const videos = {
 // Preuves factuelles (cahier des charges, section 2, et sources presse)
 export const proofs = {
   fr: [
-    { k: '2011', v: 'Assistant de Germaine Acogny, à l’École des Sables' },
+    { k: '2011', v: 'Enseigne à l’École des Sables, aux côtés de Germaine Acogny' },
     { k: '2005', v: 'Fonde Aské Danse à Lomé. « Aské » : la lumière, en kotokoli' },
     { k: '18', v: 'danseurs, valides et à mobilité réduite, dans Dansons tous ! (2010)' },
     { k: '200', v: 'participants pour le spectacle du Cinquantenaire de l’Indépendance du Togo' },
   ],
   en: [
-    { k: '2011', v: 'Assistant to Germaine Acogny at École des Sables' },
+    { k: '2011', v: 'Teaching at École des Sables, alongside Germaine Acogny' },
     { k: '2005', v: 'Founds Aské Danse in Lomé. “Aské” means light in Kotokoli' },
     { k: '18', v: 'dancers, able-bodied and with reduced mobility, in Dansons tous ! (2010)' },
     { k: '200', v: 'participants in the show for Togo’s 50th anniversary of Independence' },
@@ -252,24 +290,26 @@ export const proofs = {
 export const bio = {
   fr: {
     short:
-      'Raouf Tchakondo est danseur, chorégraphe et pédagogue, né à Lomé. Il découvre la danse en 1998 avec la Sojaf, rejoint la compagnie Henry Motra, puis danse en Europe pour Harold George. Formé en Belgique, au Centre national de la danse à Pantin et à l’École des Sables, il est l’assistant de Germaine Acogny depuis 2011. En 2005, il fonde Aské Danse. Son écriture relie la géométrie du corps aux danses vodou du Sud et aux danses du Nord Togo.',
+      'Raouf Tchakondo est danseur, chorégraphe et professeur franco-togolais, né à Lomé. Il découvre la danse en 1998 avec la Sojaf, danse pour Henry Motra puis pour Harold George, et fonde Aské Danse en 2005. Héritier de la technique Germaine Acogny, il enseigne à l’École des Sables depuis 2011, au Togo comme à l’étranger. Son travail relie les danses traditionnelles d’Afrique de l’Ouest, la géométrie du corps et la joie de danser.',
     long: [
       'Raouf Tchakondo naît à Lomé et grandit dans le quartier Saint-Joseph, entre vodou, christianisme et islam. À 18 ans, en 1998, il découvre la danse moderne avec la compagnie Sojaf et se forme à l’École de danse traditionnelle, moderne et classique de Lomé.',
       'En 2001, il rejoint la compagnie Henry Motra et se tourne vers la danse contemporaine. À partir de 2003, il travaille avec le chorégraphe sierra-léonais Harold George. Ses pièces le conduisent en Belgique et en tournée dans plusieurs pays d’Europe.',
       'En 2005, il fonde à Lomé la compagnie Aské Danse. « Aské » signifie « lumière » en kotokoli. De 2005 à 2007, il enseigne au Collège régional d’artistes de Dapaong, dans le Nord du pays.',
-      'Il se forme ensuite à l’École des Sables, au Sénégal, et au Centre national de la danse, à Pantin (2009). Depuis 2011, il assiste Germaine Acogny dans la transmission de sa technique.',
+      'Il se forme ensuite à l’École des Sables, au Sénégal, et au Centre national de la danse, à Pantin (2009). Depuis 2011, il assiste Germaine Acogny dans la transmission de sa technique, dont il est l’un des héritiers.',
+      'Fort de plus de quinze ans d’expérience professionnelle, il donne des cours réguliers aux amateurs, aux jeunes danseurs et aux professionnels, au Togo comme à l’étranger, notamment à l’École des Sables. Il propose un travail physique intense qui fait des passerelles entre les danses traditionnelles d’Afrique de l’Ouest et la technique Acogny.',
       'Son écriture part des figures géométriques : « L’élément de base, c’est l’orientation que tu donnes au corps dans l’espace en se calquant sur les figures géométriques : cercles, triangles, losanges, carrés. » Il la nourrit des danses vodou du Sud et des danses traditionnelles du Nord Togo.',
       'Ses pièces parlent du monde : l’esclavage moderne, l’amour, l’eldorado et l’immigration, l’égalité malgré le handicap, la nécessité de s’unir. Kébia et Kola (2008), Nalè et Essime (2009), Dansons tous ! (2010, 18 danseurs valides et à mobilité réduite), L’Œil (2013, joué au Bénin et en Côte d’Ivoire). En 2010, il signe le spectacle du Cinquantenaire de l’Indépendance du Togo, avec 200 participants. Pour le théâtre, il collabore à la chorégraphie d’Isis-Antigone, de Kossi Efoui.',
     ],
   },
   en: {
     short:
-      'Raouf Tchakondo is a dancer, choreographer and teacher born in Lomé, Togo. He discovered dance in 1998 with Sojaf, joined the Henry Motra company, then danced in Europe for Harold George. Trained in Belgium, at the Centre national de la danse in Pantin and at École des Sables, he has been assistant to Germaine Acogny since 2011. In 2005 he founded Aské Danse. His work connects the geometry of the body with the vodou dances of southern Togo and the dances of the north.',
+      'Raouf Tchakondo is a French-Togolese dancer, choreographer and teacher, born in Lomé. He discovered dance in 1998 with Sojaf, danced for Henry Motra and then Harold George, and founded Aské Danse in 2005. An heir to the Germaine Acogny technique, he has taught at École des Sables since 2011, in Togo and abroad. His work connects the traditional dances of West Africa, the geometry of the body and the joy of dancing.',
     long: [
       'Raouf Tchakondo was born in Lomé and grew up in the Saint-Joseph neighbourhood, between vodou, Christianity and Islam. In 1998, aged 18, he discovered modern dance with the Sojaf company and trained at the School of Traditional, Modern and Classical Dance in Lomé.',
       'In 2001 he joined the Henry Motra company and turned to contemporary dance. From 2003 he worked with Sierra Leonean choreographer Harold George. Those pieces took him to Belgium and on tour across Europe.',
       'In 2005 he founded the Aské Danse company in Lomé. “Aské” means “light” in Kotokoli. From 2005 to 2007 he taught at the Regional College of Artists in Dapaong, in the north of the country.',
-      'He went on to train at École des Sables in Senegal and at the Centre national de la danse in Pantin (2009). Since 2011 he has assisted Germaine Acogny in teaching her technique.',
+      'He went on to train at École des Sables in Senegal and at the Centre national de la danse in Pantin (2009). Since 2011 he has assisted Germaine Acogny in teaching her technique, of which he is one of the heirs.',
+      'With more than fifteen years of professional experience, he gives regular classes to amateurs, young dancers and professionals, in Togo and abroad, notably at École des Sables. He offers intense physical work that builds bridges between the traditional dances of West Africa and the Acogny technique.',
       'His writing starts from geometric figures: “The basic element is the orientation you give the body in space, modelled on geometric figures: circles, triangles, diamonds, squares.” He feeds it with the vodou dances of the South and the traditional dances of northern Togo.',
       'His pieces speak about the world: modern slavery, love, the promised land and immigration, equality despite disability, the need to unite. Kébia et Kola (2008), Nalè et Essime (2009), Dansons tous ! (2010, 18 able-bodied dancers and dancers with reduced mobility), L’Œil (2013, performed in Benin and Côte d’Ivoire). In 2010 he created the show for Togo’s 50th anniversary of Independence, with 200 participants. For the theatre, he collaborated on the choreography of Isis-Antigone by Kossi Efoui.',
     ],
@@ -512,7 +552,7 @@ export const pages = {
       lightText: 'Depuis 2005, la compagnie crée, tourne et forme à Lomé une nouvelle génération de danseurs.',
       lightCta: 'Découvrir la compagnie',
       galleryTitle: 'En mouvement',
-      galleryText: 'Sur la plage de Lomé, en studio, sur scène. Là où il danse, il transmet.',
+      galleryText: 'À l’École des Sables, sur la plage de Lomé, en studio, sur scène. Là où il danse, il transmet la joie de danser.',
       videoTitle: 'Le voir transmettre',
       videoText: 'Stage « Du geste à la danse. Le danseur interprète », 2015. Extrait « Djola ».',
       quoteSrc: 'Raouf Tchakondo, Togocultures, 2016',
@@ -570,12 +610,22 @@ export const pages = {
     transmission: {
       title: 'Transmission',
       description: 'Stages et masterclasses de danse contemporaine avec Raouf Tchakondo : technique Acogny, danses sources du Togo. Inscription et paiement en ligne.',
-      lead: 'Stages, masterclasses, cours. La technique Acogny et les danses sources du Togo.',
+      lead: 'Un travail physique intense, entre danses traditionnelles d’Afrique de l’Ouest et technique Acogny. Et toujours, la joie de danser.',
       offers: [
         { t: 'Stages', d: 'Plusieurs jours de travail intensif. Technique, répertoire, écriture.' },
         { t: 'Masterclasses', d: 'Une ou deux journées, en festival ou en institution.' },
         { t: 'Cours en ligne', d: 'Il a déjà enseigné en direct pour les « Mercredis de danse » de l’École des Sables. Cours vidéo à venir.' },
       ],
+      pedaKicker: 'Sa pédagogie',
+      pedaQuote: 'Un monde simple où le corps est en joie.',
+      pedaText: [
+        'Raouf propose un travail physique intense, en faisant des passerelles entre différentes danses traditionnelles d’Afrique de l’Ouest et la technique Germaine Acogny, dont il est l’un des héritiers.',
+        'Son approche est d’emmener les danseurs vers un monde simple où le corps est en joie, par l’enseignement des éléments de base.',
+        'Il invite chaque danseur à se mettre en confiance pour dépasser ses limites, tout en gardant la joie de danser.',
+      ],
+      pedaBasicsTitle: 'Les éléments de base',
+      pedaBasics: ['Le contact des pieds', 'Le positionnement du bassin', 'La colonne', 'La mobilisation du sternum'],
+      pedaFor: 'Amateurs, jeunes danseurs et professionnels. Au Togo comme à l’étranger, et à l’École des Sables depuis 2011.',
       agendaTitle: 'Agenda des stages',
       formTitle: 'Inscription',
       session: 'Session',
@@ -629,6 +679,7 @@ export const pages = {
         { src: 'L-FRII', t: 'Zoom sur 4 danseurs de la Maison des Artistes Danseurs', y: '2022', url: 'https://l-frii.com/togo-zoom-sur-ces-4-danseurs-de-la-maison-des-artistes-danseurs/' },
         { src: 'YouTube', t: 'Technique Acogny by Raouf Tchakondo', y: '2015', url: 'https://www.youtube.com/watch?v=YMk7W4FL3ts' },
       ],
+      photosTitle: 'Photos',
       creditsTitle: 'Crédits photo',
       contactTitle: 'Contact presse',
     },
@@ -679,7 +730,7 @@ export const pages = {
       lightText: 'Since 2005 the company has created, toured and trained a new generation of dancers in Lomé.',
       lightCta: 'Discover the company',
       galleryTitle: 'In motion',
-      galleryText: 'On the beach in Lomé, in the studio, on stage. Wherever he dances, he teaches.',
+      galleryText: 'At École des Sables, on the beach in Lomé, in the studio, on stage. Wherever he dances, he passes on the joy of dancing.',
       videoTitle: 'Watch him teach',
       videoText: '“From gesture to dance. The dancer as interpreter” workshop, 2015. “Djola” excerpt.',
       quoteSrc: 'Raouf Tchakondo, Togocultures, 2016',
@@ -737,12 +788,22 @@ export const pages = {
     transmission: {
       title: 'Teaching',
       description: 'Contemporary dance workshops and masterclasses with Raouf Tchakondo: Acogny technique, source dances of Togo. Online booking and payment.',
-      lead: 'Workshops, masterclasses, classes. The Acogny technique and the source dances of Togo.',
+      lead: 'Intense physical work, between the traditional dances of West Africa and the Acogny technique. And always, the joy of dancing.',
       offers: [
         { t: 'Workshops', d: 'Several days of intensive work. Technique, repertoire, writing.' },
         { t: 'Masterclasses', d: 'One or two days, at festivals or institutions.' },
         { t: 'Online classes', d: 'He has already taught live for École des Sables’ “Dance Wednesdays”. Video classes coming soon.' },
       ],
+      pedaKicker: 'His teaching',
+      pedaQuote: 'A simple world where the body is joyful.',
+      pedaText: [
+        'Raouf offers intense physical work, building bridges between various traditional dances of West Africa and the Germaine Acogny technique, of which he is one of the heirs.',
+        'His approach is to take dancers into a simple world where the body is joyful, by teaching the basic elements.',
+        'He invites each dancer to gain confidence in order to go beyond their limits, while keeping the joy of dancing.',
+      ],
+      pedaBasicsTitle: 'The basic elements',
+      pedaBasics: ['Contact of the feet', 'Placement of the pelvis', 'The spine', 'Mobilising the sternum'],
+      pedaFor: 'Amateurs, young dancers and professionals. In Togo and abroad, and at École des Sables since 2011.',
       agendaTitle: 'Workshop calendar',
       formTitle: 'Registration',
       session: 'Session',
@@ -796,6 +857,7 @@ export const pages = {
         { src: 'L-FRII', t: 'Four dancers of the Maison des Artistes Danseurs (FR)', y: '2022', url: 'https://l-frii.com/togo-zoom-sur-ces-4-danseurs-de-la-maison-des-artistes-danseurs/' },
         { src: 'YouTube', t: 'Technique Acogny by Raouf Tchakondo', y: '2015', url: 'https://www.youtube.com/watch?v=YMk7W4FL3ts' },
       ],
+      photosTitle: 'Photos',
       creditsTitle: 'Photo credits',
       contactTitle: 'Press contact',
     },

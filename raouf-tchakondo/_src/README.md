@@ -42,10 +42,15 @@ python3 -m http.server 8000   # depuis la racine du dépôt
 - Accessibilité : navigation clavier, lien d'évitement, contrastes AA, cibles tactiles de 44 px.
 - Photos en WebP (2 tailles, chargement différé) : accueil sous 500 Ko hors polices, la vidéo n'étant chargée qu'au clic.
 
-## Photos et vidéo (trouvées en ligne)
+## Photos et vidéo
 
 | Fichier (`assets/img/`) | Sujet | Crédit / source |
 | --- | --- | --- |
+| `sable-*`, `sable-carre-*` | Raouf mène un cours sur le sable (pantalon rouge) — photo principale de l'accueil | Transmise par Raouf, © DR (photographe à préciser) |
+| `loose-control-*` | Raouf au premier plan, grand groupe à l'École des Sables | Transmise par Raouf, © Siaka S. Traoré |
+| `joie-*` | Danseuses et danseurs qui rient, bras ouverts | Transmise par Raouf, © Siaka S. Traoré |
+| `atelier-*` | Raouf, concentré, devant le groupe | Transmise par Raouf, © Siaka S. Traoré |
+| `tente-*` | Cours au sol sous la tente jaune | Transmise par Raouf, © DR (photographe à préciser) |
 | `portrait-*` | Portrait de Raouf en pagne | Togocultures (2016) |
 | `plage-lome-*` | Raouf et ses élèves sur la plage de Lomé | Togocultures (2016) |
 | `cours-*` | Raouf guidant un cours | © Siaka S. Traoré, via Togocultures |
@@ -55,6 +60,7 @@ python3 -m http.server 8000   # depuis la racine du dépôt
 
 La vidéo YouTube `YMk7W4FL3ts` est intégrée (lecteur youtube-nocookie chargé au clic).
 Chaque photo affiche son crédit ; la page Presse les liste avec leur source.
+La biographie et la pédagogie (page Transmission) reprennent le texte transmis par Raouf.
 **Ces photos appartiennent à leurs auteurs : obtenir leur accord (ou les remplacer par les photos du tournage dédié) avant la mise en ligne publique.**
 L'image de partage `assets/og.jpg` est composée à partir du portrait et de la photo de plage.
 

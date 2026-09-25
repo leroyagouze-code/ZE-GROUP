@@ -268,9 +268,9 @@ const personLd = (lang) => ({
   name: 'Raouf Tchakondo',
   jobTitle: lang === 'fr' ? 'Danseur, chorégraphe et pédagogue' : 'Dancer, choreographer and teacher',
   birthPlace: { '@type': 'Place', name: 'Lomé, Togo' },
-  nationality: { '@type': 'Country', name: 'Togo' },
+  nationality: [{ '@type': 'Country', name: 'Togo' }, { '@type': 'Country', name: 'France' }],
   url: config.siteUrl + '/' + (lang === 'en' ? 'en/' : ''),
-  image: config.siteUrl + '/assets/img/portrait-502.webp',
+  image: config.siteUrl + '/assets/img/sable-1280.webp',
   description: C.bio[lang].short,
   alumniOf: [{ '@type': 'EducationalOrganization', name: 'École des Sables' }, { '@type': 'Organization', name: 'Centre national de la danse' }],
   memberOf: { '@type': 'DanceGroup', name: 'Aské Danse' },
@@ -478,7 +478,7 @@ function home(ctx) {
   <div class="hero-visual">
     <span class="hv-sun"></span>
     <span class="hv-ring">${shape('circle', 'draw')}</span>
-    ${photo(ctx, 'portrait', { cls: 'hv-portrait mask-circle', eager: true, sizes: '(min-width: 900px) 34vw, 72vw' })}
+    ${photo(ctx, 'sable-carre', { cls: 'hv-portrait mask-circle', eager: true, sizes: '(min-width: 900px) 34vw, 72vw' })}
     ${photo(ctx, 'plage-lome', { cls: 'hv-beach mask-losange', sizes: '(min-width: 900px) 22vw, 46vw' })}
     <span class="hv-tri">${solid('triangle')}</span>
   </div>
@@ -503,10 +503,13 @@ ${marquee(ctx)}
 <section class="section" data-trace aria-labelledby="gal-h">
   <div class="section-head"><h2 id="gal-h" class="h2">${esc(p.galleryTitle)}</h2><p class="lead">${esc(p.galleryText)}</p></div>
   <div class="mosaic">
-    ${photo(ctx, 'cours', { cls: 'm-a reveal', sizes: '(min-width: 900px) 60vw, 100vw' })}
-    ${photo(ctx, 'releve', { cls: 'm-b reveal', sizes: '(min-width: 900px) 30vw, 50vw' })}
-    ${photo(ctx, 'plage-lome', { cls: 'm-c reveal', sizes: '(min-width: 900px) 30vw, 50vw' })}
-    ${photo(ctx, 'isis-antigone', { cls: 'm-d reveal', sizes: '(min-width: 900px) 60vw, 100vw' })}
+    ${[
+      ['loose-control', 1], ['atelier', 0],
+      ['tente', 0], ['joie', 1],
+      ['isis-antigone', 1], ['plage-lome', 0],
+    ]
+      .map(([k, wide]) => photo(ctx, k, { cls: `${wide ? 'm-wide' : 'm-narrow'} reveal`, sizes: wide ? '(min-width: 760px) 60vw, 100vw' : '(min-width: 760px) 30vw, 100vw' }))
+      .join('')}
   </div>
 </section>
 
@@ -574,7 +577,7 @@ function bioPage(ctx) {
   const body = `
 ${pageHead(ctx, p.title, p.lead, { image: 'portrait', shapeName: 'circle', color: 'sun' })}
 <section class="section split" data-trace>
-  ${photo(ctx, 'cours', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
+  ${photo(ctx, 'atelier', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
   <div>
     <h2 class="eyebrow">${esc(p.shortTitle)}</h2>
     <p class="big-serif">${esc(b.short)}</p>
@@ -695,8 +698,9 @@ ${pageHead(ctx, p.title, p.lead, { color: 'sun' })}
   </figure>
   <span class="qb-shapes" aria-hidden="true">${solid('circle')}${solid('triangle')}${solid('losange')}${solid('square')}</span>
 </section>
-<section class="section prose" data-trace>
-  ${p.intro.map((x) => `<p class="big-serif">${esc(x)}</p>`).join('')}
+<section class="section split" data-trace>
+  <div class="prose">${p.intro.map((x) => `<p class="big-serif">${esc(x)}</p>`).join('')}</div>
+  ${photo(ctx, 'sable', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
 </section>
 <section class="section" data-trace aria-labelledby="src-h">
   <h2 id="src-h" class="h2">${esc(p.moduleTitle)}</h2>
@@ -792,14 +796,29 @@ function transmissionPage(ctx) {
     )
     .join('');
   const body = `
-${pageHead(ctx, p.title, p.lead, { image: 'plage-lome', shapeName: 'losange', color: 'sun' })}
+${pageHead(ctx, p.title, p.lead, { image: 'tente', shapeName: 'square', color: 'terracotta' })}
 <section class="section" data-trace>
   <ul class="offers">${p.offers
     .map((o, i) => `<li class="reveal c-${['terracotta', 'indigo', 'ochre'][i]}" style="--i:${i}">${solid(['losange', 'circle', 'square'][i])}<h2 class="h3">${esc(o.t)}</h2><p>${esc(o.d)}</p></li>`)
     .join('')}</ul>
 </section>
+<section class="section pedagogy" data-trace aria-labelledby="peda-h">
+  <div class="split">
+    ${photo(ctx, 'loose-control', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
+    <div>
+      <p class="eyebrow">${esc(p.pedaKicker)}</p>
+      <h2 id="peda-h" class="h2 peda-quote">« ${esc(p.pedaQuote)} »</h2>
+      ${p.pedaText.map((x) => `<p class="big-serif">${esc(x)}</p>`).join('')}
+    </div>
+  </div>
+  <h3 class="eyebrow gap">${esc(p.pedaBasicsTitle)}</h3>
+  <ol class="basics">${p.pedaBasics
+    .map((b, i) => `<li class="reveal c-${['sun', 'terracotta', 'indigo', 'ochre'][i]}" style="--i:${i}">${solid(['square', 'triangle', 'losange', 'circle'][i])}<span>${esc(b)}</span></li>`)
+    .join('')}</ol>
+  <p class="lead">${esc(p.pedaFor)}</p>
+</section>
 <section class="section split video-sec" data-trace>
-  ${photo(ctx, 'cours', { sizes: '(min-width: 860px) 50vw, 100vw' })}
+  ${photo(ctx, 'joie', { sizes: '(min-width: 860px) 50vw, 100vw' })}
   ${video(ctx, 'djola')}
 </section>
 <section class="section" id="agenda" data-trace aria-labelledby="ag-h">
@@ -877,7 +896,8 @@ function pressePage(ctx) {
   const p = ctx.p.presse;
   const b = C.bio[ctx.lang];
   const credits = Object.entries(C.images)
-    .map(([k, im]) => `<li><a href="${im.url}" rel="noopener" target="_blank">${esc(tr(im.alt, ctx.lang))}</a> — © ${esc(im.credit)}</li>`)
+    .filter(([, im]) => !im.hidden)
+    .map(([k, im]) => `<li>${im.url ? `<a href="${im.url}" rel="noopener" target="_blank">${esc(tr(im.alt, ctx.lang))}</a>` : esc(tr(im.alt, ctx.lang))} — © ${esc(im.credit)}</li>`)
     .join('');
   const body = `
 ${pageHead(ctx, p.title, p.lead, { image: 'cours', shapeName: 'eye', color: 'terracotta' })}
@@ -905,6 +925,12 @@ ${pageHead(ctx, p.title, p.lead, { image: 'cours', shapeName: 'eye', color: 'ter
   <ul class="press-list">${p.articles
     .map((a) => `<li><strong>${esc(a.src)}</strong><a href="${a.url}" rel="noopener" target="_blank">${esc(a.t)}</a><span>${a.y ? esc(a.y) : ''}</span></li>`)
     .join('')}</ul>
+</section>
+<section class="section" data-trace aria-labelledby="ph-h">
+  <h2 id="ph-h" class="h2">${esc(p.photosTitle)}</h2>
+  <div class="press-photos">${['sable', 'loose-control', 'atelier', 'joie', 'tente', 'portrait', 'plage-lome', 'cours']
+    .map((k) => photo(ctx, k, { sizes: '(min-width: 860px) 25vw, 50vw' }))
+    .join('')}</div>
 </section>
 <section class="section" data-trace aria-labelledby="cr-h">
   <h2 id="cr-h" class="h3">${esc(p.creditsTitle)}</h2>
