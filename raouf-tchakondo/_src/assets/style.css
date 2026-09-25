@@ -2524,3 +2524,192 @@ legend {
 .press-photos .photo {
   aspect-ratio: 1;
 }
+
+/* ---------- carrousel 3D (série en blanc) ---------- */
+
+.g3d {
+  --cw: clamp(210px, 25vw, 340px);
+  --r: calc(var(--cw) * 1.1);
+  position: relative;
+  overflow: hidden;
+  color: var(--cream);
+  background: radial-gradient(120% 90% at 50% 105%, var(--sun) 0%, var(--ochre) 28%, var(--terracotta) 62%, #8f2c10 100%);
+  padding: clamp(56px, 8vw, 110px) 0 clamp(40px, 6vw, 72px);
+}
+
+@media (max-width: 700px) {
+  .g3d {
+    --cw: 56vw;
+    --r: calc(var(--cw) * 0.82);
+  }
+}
+
+.g3d-head {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.g3d-head .eyebrow {
+  color: var(--sun);
+}
+
+.g3d-head .lead {
+  margin-inline: auto;
+}
+
+.g3d-sun {
+  position: absolute;
+  left: 50%;
+  bottom: -38vmin;
+  width: 76vmin;
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(rgba(255, 248, 238, 0.14) 0 5deg, transparent 5deg 15deg);
+  animation: spin 120s linear infinite;
+  pointer-events: none;
+}
+
+.g3d-stage {
+  position: relative;
+  z-index: 1;
+  height: calc(var(--cw) * 1.25 + 140px);
+  perspective: 1500px;
+  perspective-origin: 50% 30%;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.g3d-stage:active {
+  cursor: grabbing;
+}
+
+.g3d-stage:focus-visible {
+  outline-offset: -6px;
+}
+
+.g3d-ring {
+  position: absolute;
+  left: 50%;
+  top: 48px;
+  width: var(--cw);
+  height: calc(var(--cw) * 1.25);
+  margin-left: calc(var(--cw) / -2);
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--r) * -1)) rotateX(-5deg) rotateY(var(--a, 0deg));
+}
+
+.g3d-card {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
+  box-shadow: 0 24px 50px rgba(60, 16, 4, 0.45);
+  filter: brightness(calc(1 - var(--f, 0) * 0.6)) saturate(calc(1 - var(--f, 0) * 0.4));
+  -webkit-box-reflect: below 10px linear-gradient(transparent 72%, rgba(255, 255, 255, 0.22));
+  cursor: pointer;
+}
+
+.g3d-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.g3d-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 18px 16px;
+  background: linear-gradient(transparent, rgba(35, 22, 15, 0.7));
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  /* légende masquée quand la carte est vue de dos (texte inversé) */
+  opacity: clamp(0, calc(1 - (var(--f, 0) - 0.25) * 6), 1);
+}
+
+.g3d-card figcaption span {
+  font-size: 0.7em;
+  color: var(--sun);
+}
+
+.g3d-ctrl {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 var(--gutter);
+}
+
+.g3d-ctrl button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 248, 238, 0.6);
+  background: rgba(255, 248, 238, 0.12);
+  color: var(--cream);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s var(--ease);
+}
+
+.g3d-ctrl button:hover {
+  background: var(--cream);
+  color: var(--terracotta-ink);
+  transform: scale(1.06);
+}
+
+.g3d-ctrl svg {
+  width: 22px;
+  height: 22px;
+}
+
+.g3d-ctrl .i-play,
+.g3d-ctrl [aria-pressed='true'] .i-pause {
+  display: none;
+}
+
+.g3d-ctrl [aria-pressed='true'] .i-play {
+  display: inline;
+}
+
+.g3d-caption {
+  min-width: 11ch;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- accueil : parallaxe du visuel (profondeur au survol) ---------- */
+
+[data-parallax] > * {
+  transition: translate 0.4s var(--ease);
+}
+
+[data-parallax] .hv-sun { translate: calc(var(--mx, 0) * -14px) calc(var(--my, 0) * -14px); }
+[data-parallax] .hv-portrait { translate: calc(var(--mx, 0) * 10px) calc(var(--my, 0) * 10px); }
+[data-parallax] .hv-beach { translate: calc(var(--mx, 0) * 24px) calc(var(--my, 0) * 24px); }
+[data-parallax] .hv-tri { translate: calc(var(--mx, 0) * 34px) calc(var(--my, 0) * 34px); }

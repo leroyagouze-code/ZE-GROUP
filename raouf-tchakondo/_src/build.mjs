@@ -178,6 +178,41 @@ function creationCard(ctx, c) {
   </li>`;
 }
 
+// Carrousel 3D : les cartes sont posées en anneau (rotateY + translateZ), main.js le fait tourner
+function gallery3d(ctx) {
+  const S = C.series;
+  const L = S[ctx.lang];
+  const n = S.items.length;
+  const cards = S.items
+    .map((it, i) => {
+      const im = C.images[`${it.key}-carte`];
+      const srcset = im.sizes.map(([w]) => `${ctx.asset(`img/${it.key}-carte-${w}.webp`)} ${w}w`).join(', ');
+      const [w, h] = im.sizes[im.sizes.length - 1];
+      return `<figure class="g3d-card" style="--i:${i}" data-title="${esc(it[ctx.lang])}">
+        <img src="${ctx.asset(`img/${it.key}-carte-${w}.webp`)}" srcset="${srcset}" sizes="(min-width: 900px) 340px, 60vw" width="${w}" height="${h}" alt="${esc(tr(im.alt, ctx.lang))}" loading="lazy" decoding="async" draggable="false">
+        <figcaption><span>0${i + 1}</span>${esc(it[ctx.lang])}</figcaption>
+      </figure>`;
+    })
+    .join('');
+  return `<section class="g3d" data-g3d data-trace aria-roledescription="${ctx.lang === 'fr' ? 'carrousel' : 'carousel'}" aria-labelledby="g3d-h">
+  <div class="g3d-head">
+    <p class="eyebrow">${esc(L.kicker)}</p>
+    <h2 id="g3d-h" class="h2">${esc(L.title)}</h2>
+    <p class="lead">${esc(L.lead)}</p>
+  </div>
+  <div class="g3d-stage" tabindex="0" aria-label="${esc(L.stage)}">
+    <div class="g3d-ring" style="--n:${n}">${cards}</div>
+  </div>
+  <div class="g3d-ctrl">
+    <button type="button" data-g3d-prev aria-label="${esc(L.prev)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <p class="g3d-caption" aria-live="polite">01 · ${esc(S.items[0][ctx.lang])}</p>
+    <button type="button" data-g3d-toggle aria-pressed="false" aria-label="${esc(L.pause)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path class="i-play" d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+    <button type="button" data-g3d-next aria-label="${esc(L.next)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+  <span class="g3d-sun" aria-hidden="true"></span>
+</section>`;
+}
+
 function marquee(ctx) {
   const glyphs = ['circle', 'triangle', 'losange', 'square'];
   const row = ctx.t.marquee.map((w, i) => `<span>${esc(w)}</span>${solid(glyphs[i % 4], 'mq-glyph')}`).join('');
@@ -270,7 +305,7 @@ const personLd = (lang) => ({
   birthPlace: { '@type': 'Place', name: 'Lomé, Togo' },
   nationality: [{ '@type': 'Country', name: 'Togo' }, { '@type': 'Country', name: 'France' }],
   url: config.siteUrl + '/' + (lang === 'en' ? 'en/' : ''),
-  image: config.siteUrl + '/assets/img/sable-1280.webp',
+  image: config.siteUrl + '/assets/img/envol-960.webp',
   description: C.bio[lang].short,
   alumniOf: [{ '@type': 'EducationalOrganization', name: 'École des Sables' }, { '@type': 'Organization', name: 'Centre national de la danse' }],
   memberOf: { '@type': 'DanceGroup', name: 'Aské Danse' },
@@ -475,15 +510,16 @@ function home(ctx) {
       <a class="btn ghost" href="${ctx.href('contact')}?type=tournee">${esc(p.ctaBook)}</a>
     </div>
   </div>
-  <div class="hero-visual">
+  <div class="hero-visual" data-parallax>
     <span class="hv-sun"></span>
     <span class="hv-ring">${shape('circle', 'draw')}</span>
-    ${photo(ctx, 'sable-carre', { cls: 'hv-portrait mask-circle', eager: true, sizes: '(min-width: 900px) 34vw, 72vw' })}
-    ${photo(ctx, 'plage-lome', { cls: 'hv-beach mask-losange', sizes: '(min-width: 900px) 22vw, 46vw' })}
+    ${photo(ctx, 'envol-carre', { cls: 'hv-portrait mask-circle', eager: true, sizes: '(min-width: 900px) 34vw, 72vw' })}
+    ${photo(ctx, 'sable-carre', { cls: 'hv-beach mask-losange', sizes: '(min-width: 900px) 22vw, 46vw' })}
     <span class="hv-tri">${solid('triangle')}</span>
   </div>
 </section>
 ${marquee(ctx)}
+${gallery3d(ctx)}
 
 <section class="section proofs" data-trace aria-labelledby="proofs-h">
   <h2 id="proofs-h" class="eyebrow">${esc(p.proofTitle)}</h2>
@@ -575,7 +611,7 @@ function bioPage(ctx) {
   const p = ctx.p.bio;
   const b = C.bio[ctx.lang];
   const body = `
-${pageHead(ctx, p.title, p.lead, { image: 'portrait', shapeName: 'circle', color: 'sun' })}
+${pageHead(ctx, p.title, p.lead, { image: 'ailes', shapeName: 'circle', color: 'sun' })}
 <section class="section split" data-trace>
   ${photo(ctx, 'atelier', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
   <div>
@@ -690,7 +726,7 @@ ${head}
 function langagePage(ctx) {
   const p = ctx.p.langage;
   const body = `
-${pageHead(ctx, p.title, p.lead, { color: 'sun' })}
+${pageHead(ctx, p.title, p.lead, { image: 'poing', shapeName: 'spiral', color: 'sun' })}
 <section class="quote-band" data-trace>
   <figure>
     <blockquote><p>« ${esc(C.quote[ctx.lang])} »</p></blockquote>
@@ -700,7 +736,7 @@ ${pageHead(ctx, p.title, p.lead, { color: 'sun' })}
 </section>
 <section class="section split" data-trace>
   <div class="prose">${p.intro.map((x) => `<p class="big-serif">${esc(x)}</p>`).join('')}</div>
-  ${photo(ctx, 'sable', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
+  ${photo(ctx, 'equilibre', { sizes: '(min-width: 860px) 50vw, 100vw', cls: 'tilt' })}
 </section>
 <section class="section" data-trace aria-labelledby="src-h">
   <h2 id="src-h" class="h2">${esc(p.moduleTitle)}</h2>
@@ -928,7 +964,7 @@ ${pageHead(ctx, p.title, p.lead, { image: 'cours', shapeName: 'eye', color: 'ter
 </section>
 <section class="section" data-trace aria-labelledby="ph-h">
   <h2 id="ph-h" class="h2">${esc(p.photosTitle)}</h2>
-  <div class="press-photos">${['sable', 'loose-control', 'atelier', 'joie', 'tente', 'portrait', 'plage-lome', 'cours']
+  <div class="press-photos">${['envol', 'ailes', 'poing', 'equilibre', 'elan', 'sable', 'loose-control', 'atelier', 'joie', 'tente', 'portrait', 'plage-lome']
     .map((k) => photo(ctx, k, { sizes: '(min-width: 860px) 25vw, 50vw' }))
     .join('')}</div>
 </section>
