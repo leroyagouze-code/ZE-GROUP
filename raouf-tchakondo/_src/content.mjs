@@ -188,17 +188,10 @@ export const ui = {
 export const images = {
   // Série en blanc, bord de lagune — © Siaka S. Traoré (transmise par Raouf)
   envol: {
-    sizes: [[480, 320], [960, 640]],
+    sizes: [[480, 320], [960, 640], [1280, 853]],
     alt: { fr: 'Raouf Tchakondo en lévitation, bras ouverts, tout en blanc sous un arbre, au bord d’une lagune', en: 'Raouf Tchakondo mid-air, arms open, all in white under a tree, by a lagoon' },
     credit: 'Siaka S. Traoré',
     provided: true,
-  },
-  'envol-carte': {
-    sizes: [[480, 600], [680, 851]],
-    alt: { fr: 'Raouf Tchakondo en lévitation, bras ouverts, tout en blanc sous un arbre, au bord d’une lagune', en: 'Raouf Tchakondo mid-air, arms open, all in white under a tree, by a lagoon' },
-    credit: 'Siaka S. Traoré',
-    provided: true,
-    hidden: true,
   },
   equilibre: {
     sizes: [[480, 320], [960, 640]],
@@ -206,25 +199,11 @@ export const images = {
     credit: 'Siaka S. Traoré',
     provided: true,
   },
-  'equilibre-carte': {
-    sizes: [[480, 600], [680, 851]],
-    alt: { fr: 'Raouf Tchakondo en équilibre sur une jambe, l’autre tendue devant lui, en tenue blanche', en: 'Raouf Tchakondo balancing on one leg, the other stretched out in front, dressed in white' },
-    credit: 'Siaka S. Traoré',
-    provided: true,
-    hidden: true,
-  },
   ailes: {
     sizes: [[480, 320], [960, 640]],
     alt: { fr: 'Raouf Tchakondo face à l’objectif, jambes fléchies, bras déployés comme des ailes', en: 'Raouf Tchakondo facing the camera, knees bent, arms spread like wings' },
     credit: 'Siaka S. Traoré',
     provided: true,
-  },
-  'ailes-carte': {
-    sizes: [[480, 600], [680, 851]],
-    alt: { fr: 'Raouf Tchakondo face à l’objectif, jambes fléchies, bras déployés comme des ailes', en: 'Raouf Tchakondo facing the camera, knees bent, arms spread like wings' },
-    credit: 'Siaka S. Traoré',
-    provided: true,
-    hidden: true,
   },
   elan: {
     sizes: [[480, 320], [960, 640]],
@@ -232,32 +211,11 @@ export const images = {
     credit: 'Siaka S. Traoré',
     provided: true,
   },
-  'elan-carte': {
-    sizes: [[480, 600], [680, 851]],
-    alt: { fr: 'Raouf Tchakondo penché en avant, bras tendus vers l’arrière, dans un mouvement d’élan', en: 'Raouf Tchakondo leaning forward, arms stretched back, in a surge of movement' },
-    credit: 'Siaka S. Traoré',
-    provided: true,
-    hidden: true,
-  },
   poing: {
     sizes: [[480, 320], [960, 640]],
     alt: { fr: 'Raouf Tchakondo, poing levé vers le ciel, jambe arrière levée, regard vers l’objectif', en: 'Raouf Tchakondo, fist raised to the sky, back leg lifted, looking at the camera' },
     credit: 'Siaka S. Traoré',
     provided: true,
-  },
-  'poing-carte': {
-    sizes: [[480, 600], [680, 851]],
-    alt: { fr: 'Raouf Tchakondo, poing levé vers le ciel, jambe arrière levée, regard vers l’objectif', en: 'Raouf Tchakondo, fist raised to the sky, back leg lifted, looking at the camera' },
-    credit: 'Siaka S. Traoré',
-    provided: true,
-    hidden: true,
-  },
-  'envol-carre': {
-    sizes: [[480, 480], [740, 740]],
-    alt: { fr: 'Raouf Tchakondo en lévitation, bras ouverts, tout en blanc', en: 'Raouf Tchakondo mid-air, arms open, all in white' },
-    credit: 'Siaka S. Traoré',
-    provided: true,
-    hidden: true,
   },
   // Photos transmises par Raouf Tchakondo (2026)
   sable: {
@@ -332,35 +290,6 @@ export const images = {
     alt: { fr: 'Une danseuse de la Maison des Artistes Danseurs, bras levés, foulard en kente', en: 'A dancer from the Maison des Artistes Danseurs, arms raised, wearing a kente headscarf' },
     credit: 'L-FRII',
     url: 'https://l-frii.com/togo-zoom-sur-ces-4-danseurs-de-la-maison-des-artistes-danseurs/',
-  },
-};
-
-// Série photo mise en avant sur l'accueil (carrousel 3D)
-export const series = {
-  items: [
-    { key: 'envol', fr: 'Envol', en: 'Flight' },
-    { key: 'equilibre', fr: 'Équilibre', en: 'Balance' },
-    { key: 'ailes', fr: 'Ouverture', en: 'Opening' },
-    { key: 'elan', fr: 'Élan', en: 'Momentum' },
-    { key: 'poing', fr: 'Force', en: 'Strength' },
-  ],
-  fr: {
-    kicker: 'Série photographique · Siaka S. Traoré',
-    title: 'Le corps comme géométrie.',
-    lead: 'Cinq figures, un seul souffle. Faites tourner.',
-    prev: 'Photo précédente',
-    next: 'Photo suivante',
-    pause: 'Mettre en pause la rotation',
-    stage: 'Carrousel photo en 3D. Flèches gauche et droite pour tourner.',
-  },
-  en: {
-    kicker: 'Photo series · Siaka S. Traoré',
-    title: 'The body as geometry.',
-    lead: 'Five figures, a single breath. Give it a spin.',
-    prev: 'Previous photo',
-    next: 'Next photo',
-    pause: 'Pause the rotation',
-    stage: '3D photo carousel. Use the left and right arrow keys to turn it.',
   },
 };
 

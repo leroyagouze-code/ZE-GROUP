@@ -178,41 +178,6 @@ function creationCard(ctx, c) {
   </li>`;
 }
 
-// Carrousel 3D : les cartes sont posées en anneau (rotateY + translateZ), main.js le fait tourner
-function gallery3d(ctx) {
-  const S = C.series;
-  const L = S[ctx.lang];
-  const n = S.items.length;
-  const cards = S.items
-    .map((it, i) => {
-      const im = C.images[`${it.key}-carte`];
-      const srcset = im.sizes.map(([w]) => `${ctx.asset(`img/${it.key}-carte-${w}.webp`)} ${w}w`).join(', ');
-      const [w, h] = im.sizes[im.sizes.length - 1];
-      return `<figure class="g3d-card" style="--i:${i}" data-title="${esc(it[ctx.lang])}">
-        <img src="${ctx.asset(`img/${it.key}-carte-${w}.webp`)}" srcset="${srcset}" sizes="(min-width: 900px) 340px, 60vw" width="${w}" height="${h}" alt="${esc(tr(im.alt, ctx.lang))}" loading="lazy" decoding="async" draggable="false">
-        <figcaption><span>0${i + 1}</span>${esc(it[ctx.lang])}</figcaption>
-      </figure>`;
-    })
-    .join('');
-  return `<section class="g3d" data-g3d data-trace aria-roledescription="${ctx.lang === 'fr' ? 'carrousel' : 'carousel'}" aria-labelledby="g3d-h">
-  <div class="g3d-head">
-    <p class="eyebrow">${esc(L.kicker)}</p>
-    <h2 id="g3d-h" class="h2">${esc(L.title)}</h2>
-    <p class="lead">${esc(L.lead)}</p>
-  </div>
-  <div class="g3d-stage" tabindex="0" aria-label="${esc(L.stage)}">
-    <div class="g3d-ring" style="--n:${n}">${cards}</div>
-  </div>
-  <div class="g3d-ctrl">
-    <button type="button" data-g3d-prev aria-label="${esc(L.prev)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <p class="g3d-caption" aria-live="polite">01 · ${esc(S.items[0][ctx.lang])}</p>
-    <button type="button" data-g3d-toggle aria-pressed="false" aria-label="${esc(L.pause)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path class="i-play" d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-    <button type="button" data-g3d-next aria-label="${esc(L.next)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  </div>
-  <span class="g3d-sun" aria-hidden="true"></span>
-</section>`;
-}
-
 function marquee(ctx) {
   const glyphs = ['circle', 'triangle', 'losange', 'square'];
   const row = ctx.t.marquee.map((w, i) => `<span>${esc(w)}</span>${solid(glyphs[i % 4], 'mq-glyph')}`).join('');
@@ -500,26 +465,23 @@ function home(ctx) {
   const featured = C.creations.filter((c) => c.featured);
   const body = `
 <div class="intro" aria-hidden="true"><i></i></div>
-<section class="hero" data-trace>
-  <div class="hero-text">
-    <p class="eyebrow">${esc(ctx.t.role)} · Lomé</p>
-    <h1 class="display">Raouf <span>Tchakondo</span></h1>
-    <p class="signature">${ctx.t.signature.map(esc).join('<br>')}</p>
-    <div class="cta">
-      <a class="btn" href="${ctx.href('creations')}">${esc(p.ctaWorks)}</a>
-      <a class="btn ghost" href="${ctx.href('contact')}?type=tournee">${esc(p.ctaBook)}</a>
+<section class="hero-full" data-trace>
+  ${photo(ctx, 'envol', { cls: 'hf-media', eager: true, sizes: '100vw' })}
+  <div class="hf-shade" aria-hidden="true"></div>
+  <div class="hf-inner">
+    <div class="hero-text">
+      <p class="eyebrow">${esc(ctx.t.role)} · Lomé</p>
+      <h1 class="display">Raouf <span>Tchakondo</span></h1>
+      <p class="signature">${ctx.t.signature.map(esc).join('<br>')}</p>
+      <div class="cta">
+        <a class="btn light" href="${ctx.href('creations')}">${esc(p.ctaWorks)}</a>
+        <a class="btn ghost" href="${ctx.href('contact')}?type=tournee">${esc(p.ctaBook)}</a>
+      </div>
     </div>
   </div>
-  <div class="hero-visual" data-parallax>
-    <span class="hv-sun"></span>
-    <span class="hv-ring">${shape('circle', 'draw')}</span>
-    ${photo(ctx, 'envol-carre', { cls: 'hv-portrait mask-circle', eager: true, sizes: '(min-width: 900px) 34vw, 72vw' })}
-    ${photo(ctx, 'sable-carre', { cls: 'hv-beach mask-losange', sizes: '(min-width: 900px) 22vw, 46vw' })}
-    <span class="hv-tri">${solid('triangle')}</span>
-  </div>
+  <span class="hf-tri" aria-hidden="true">${solid('triangle')}</span>
 </section>
 ${marquee(ctx)}
-${gallery3d(ctx)}
 
 <section class="section proofs" data-trace aria-labelledby="proofs-h">
   <h2 id="proofs-h" class="eyebrow">${esc(p.proofTitle)}</h2>
@@ -540,9 +502,10 @@ ${gallery3d(ctx)}
   <div class="section-head"><h2 id="gal-h" class="h2">${esc(p.galleryTitle)}</h2><p class="lead">${esc(p.galleryText)}</p></div>
   <div class="mosaic">
     ${[
-      ['loose-control', 1], ['atelier', 0],
-      ['tente', 0], ['joie', 1],
-      ['isis-antigone', 1], ['plage-lome', 0],
+      ['loose-control', 1], ['ailes', 0],
+      ['sable', 0], ['joie', 1],
+      ['equilibre', 1], ['tente', 0],
+      ['isis-antigone', 1], ['poing', 0],
     ]
       .map(([k, wide]) => photo(ctx, k, { cls: `${wide ? 'm-wide' : 'm-narrow'} reveal`, sizes: wide ? '(min-width: 760px) 60vw, 100vw' : '(min-width: 760px) 30vw, 100vw' }))
       .join('')}

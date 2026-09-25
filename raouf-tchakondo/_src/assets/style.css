@@ -480,8 +480,7 @@ main:focus {
 
 /* ---------- sections ---------- */
 
-.section,
-.hero {
+.section {
   max-width: var(--max);
   margin: 0 auto;
   padding: clamp(56px, 9vw, 128px) var(--gutter);
@@ -798,37 +797,13 @@ main:focus {
   to { opacity: 0; visibility: hidden; }
 }
 
-/* ---------- accueil : hero ---------- */
-
-.hero {
-  display: grid;
-  gap: 24px 48px;
-  align-items: center;
-  min-height: calc(100svh - 110px);
-  padding-top: clamp(16px, 3vw, 40px);
-  padding-bottom: clamp(32px, 5vw, 64px);
-}
-
-@media (min-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  }
-  .hero-visual {
-    order: 2;
-  }
-}
+/* ---------- accueil : titre et signature ---------- */
 
 .display {
   font-size: clamp(3.4rem, 13vw, 8.5rem);
   line-height: 0.86;
   letter-spacing: -0.035em;
   margin-bottom: 0.3em;
-}
-
-@media (min-width: 900px) {
-  .hero .display {
-    font-size: clamp(3.4rem, 6.6vw, 8rem);
-  }
 }
 
 .display span {
@@ -849,78 +824,8 @@ main:focus {
   gap: 14px;
 }
 
-.hero-visual {
-  position: relative;
-  aspect-ratio: 1;
-  width: min(100%, 76svh);
-  justify-self: center;
-}
-
-@media (max-width: 899px) {
-  /* Mobile : le visage de Raouf d'abord */
-  .hero-visual {
-    order: -1;
-    width: min(86%, 380px);
-  }
-  .hero {
-    min-height: 0;
-  }
-}
-
-.hv-sun {
-  position: absolute;
-  right: 0;
-  top: 2%;
-  width: 72%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--sun);
-}
-
-.hv-ring {
-  position: absolute;
-  inset: 0;
-  color: var(--terracotta);
-}
-
-.hv-ring .shape {
-  animation: spin 50s linear infinite;
-}
-
-.hv-ring .shape * {
-  stroke-width: 2;
-}
-
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-
-.hv-portrait {
-  position: absolute;
-  left: 4%;
-  top: 8%;
-  width: 64%;
-}
-
-.hv-portrait img {
-  border: 8px solid var(--bg);
-  object-position: 50% 50%;
-}
-
-.hv-beach {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 46%;
-}
-
-.hv-tri {
-  position: absolute;
-  left: 6%;
-  bottom: 4%;
-  width: 18%;
-  --shape: var(--indigo);
-  animation: bob 5s ease-in-out infinite;
 }
 
 @keyframes bob {
@@ -2525,191 +2430,155 @@ legend {
   aspect-ratio: 1;
 }
 
-/* ---------- carrousel 3D (série en blanc) ---------- */
+/* ---------- accueil : ouverture plein écran (photo du saut en fond) ---------- */
 
-.g3d {
-  --cw: clamp(210px, 25vw, 340px);
-  --r: calc(var(--cw) * 1.1);
+.hero-full {
   position: relative;
   overflow: hidden;
+  min-height: calc(100svh - 104px);
+  display: grid;
+  align-items: center;
   color: var(--cream);
-  background: radial-gradient(120% 90% at 50% 105%, var(--sun) 0%, var(--ochre) 28%, var(--terracotta) 62%, #8f2c10 100%);
-  padding: clamp(56px, 8vw, 110px) 0 clamp(40px, 6vw, 72px);
+  background: radial-gradient(90% 120% at 0% 100%, var(--ochre) 0%, var(--terracotta) 45%, var(--terracotta-ink) 100%);
 }
 
-@media (max-width: 700px) {
-  .g3d {
-    --cw: 56vw;
-    --r: calc(var(--cw) * 0.82);
-  }
-}
-
-.g3d-head {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.g3d-head .eyebrow {
-  color: var(--sun);
-}
-
-.g3d-head .lead {
-  margin-inline: auto;
-}
-
-.g3d-sun {
+/* La photo occupe la droite ; Raouf reste dégagé du texte */
+.hf-media {
   position: absolute;
-  left: 50%;
-  bottom: -38vmin;
-  width: 76vmin;
-  aspect-ratio: 1;
-  translate: -50% 0;
-  border-radius: 50%;
-  background: repeating-conic-gradient(rgba(255, 248, 238, 0.14) 0 5deg, transparent 5deg 15deg);
-  animation: spin 120s linear infinite;
-  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 66%;
+  /* fondu progressif de la photo dans le fond terre cuite */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 38%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 38%);
 }
 
-.g3d-stage {
-  position: relative;
-  z-index: 1;
-  height: calc(var(--cw) * 1.25 + 140px);
-  perspective: 1500px;
-  perspective-origin: 50% 30%;
-  cursor: grab;
-  touch-action: pan-y;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.g3d-stage:active {
-  cursor: grabbing;
-}
-
-.g3d-stage:focus-visible {
-  outline-offset: -6px;
-}
-
-.g3d-ring {
-  position: absolute;
-  left: 50%;
-  top: 48px;
-  width: var(--cw);
-  height: calc(var(--cw) * 1.25);
-  margin-left: calc(var(--cw) / -2);
-  transform-style: preserve-3d;
-  transform: translateZ(calc(var(--r) * -1)) rotateX(-5deg) rotateY(var(--a, 0deg));
-}
-
-.g3d-card {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  border-radius: 20px;
-  overflow: hidden;
-  transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r));
-  box-shadow: 0 24px 50px rgba(60, 16, 4, 0.45);
-  filter: brightness(calc(1 - var(--f, 0) * 0.6)) saturate(calc(1 - var(--f, 0) * 0.4));
-  -webkit-box-reflect: below 10px linear-gradient(transparent 72%, rgba(255, 255, 255, 0.22));
-  cursor: pointer;
-}
-
-.g3d-card img {
+.hf-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 55% 40%;
+  border-radius: 0;
+  animation: hf-zoom 14s ease-out both;
+}
+
+@keyframes hf-zoom {
+  from { transform: scale(1.06); }
+  to { transform: scale(1); }
+}
+
+.hf-media .credit {
+  right: 16px;
+  top: 16px;
+  bottom: auto;
+  z-index: 3;
+}
+
+/* Fondu de la photo dans la terre cuite, sans teinter le blanc de la tenue */
+.hf-shade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 66%;
+  background: none;
   pointer-events: none;
 }
 
-.g3d-card figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 40px 18px 16px;
-  background: linear-gradient(transparent, rgba(35, 22, 15, 0.7));
-  font-family: var(--font-display);
-  font-stretch: 125%;
-  font-weight: 800;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  /* légende masquée quand la carte est vue de dos (texte inversé) */
-  opacity: clamp(0, calc(1 - (var(--f, 0) - 0.25) * 6), 1);
+.hf-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 120px) var(--gutter);
 }
 
-.g3d-card figcaption span {
-  font-size: 0.7em;
+.hero-full .hero-text {
+  max-width: min(560px, 46vw);
+}
+
+.hero-full .eyebrow {
   color: var(--sun);
 }
 
-.g3d-ctrl {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0 var(--gutter);
+.hero-full .display {
+  font-size: clamp(3.4rem, 7vw, 7.5rem);
+  text-shadow: 0 4px 30px rgba(90, 24, 6, 0.35);
 }
 
-.g3d-ctrl button {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 248, 238, 0.6);
-  background: rgba(255, 248, 238, 0.12);
+.hero-full .display span {
+  color: var(--sun);
+}
+
+.hero-full .signature {
+  max-width: 24ch;
+}
+
+.hero-full .btn.ghost {
   color: var(--cream);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s var(--ease);
+  border-color: var(--cream);
 }
 
-.g3d-ctrl button:hover {
+.hero-full .btn.ghost:hover {
   background: var(--cream);
   color: var(--terracotta-ink);
-  transform: scale(1.06);
 }
 
-.g3d-ctrl svg {
-  width: 22px;
-  height: 22px;
+.hf-tri {
+  position: absolute;
+  z-index: 2;
+  left: 40%;
+  bottom: clamp(24px, 5vw, 64px);
+  width: clamp(48px, 6vw, 88px);
+  --shape: var(--sun);
+  animation: bob 5s ease-in-out infinite;
 }
 
-.g3d-ctrl .i-play,
-.g3d-ctrl [aria-pressed='true'] .i-pause {
-  display: none;
+@media (max-width: 760px) {
+  /* Mobile : la photo en haut, le texte dessous sur la terre cuite */
+  .hero-full {
+    display: block;
+    min-height: 0;
+  }
+  .hf-media {
+    position: relative;
+    width: 100%;
+    height: 62svh;
+    min-height: 380px;
+    -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 30%);
+    mask-image: linear-gradient(0deg, transparent 0%, #000 30%);
+  }
+  .hf-media img {
+    object-position: 52% 30%;
+  }
+  .hf-shade {
+    top: auto;
+    width: 100%;
+    height: 62svh;
+    min-height: 380px;
+    top: 0;
+    background: none;
+  }
+  .hf-inner {
+    margin-top: -64px;
+    padding-top: 0;
+    padding-bottom: 44px;
+  }
+  .hero-full .hero-text {
+    max-width: none;
+  }
+  .hf-tri {
+    left: auto;
+    right: var(--gutter);
+    top: 24px;
+    bottom: auto;
+  }
+  .hf-media .credit {
+    top: 16px;
+    bottom: auto;
+    right: auto;
+    left: 16px;
+  }
 }
-
-.g3d-ctrl [aria-pressed='true'] .i-play {
-  display: inline;
-}
-
-.g3d-caption {
-  min-width: 11ch;
-  margin: 0;
-  text-align: center;
-  font-family: var(--font-display);
-  font-stretch: 125%;
-  font-weight: 800;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-/* ---------- accueil : parallaxe du visuel (profondeur au survol) ---------- */
-
-[data-parallax] > * {
-  transition: translate 0.4s var(--ease);
-}
-
-[data-parallax] .hv-sun { translate: calc(var(--mx, 0) * -14px) calc(var(--my, 0) * -14px); }
-[data-parallax] .hv-portrait { translate: calc(var(--mx, 0) * 10px) calc(var(--my, 0) * 10px); }
-[data-parallax] .hv-beach { translate: calc(var(--mx, 0) * 24px) calc(var(--my, 0) * 24px); }
-[data-parallax] .hv-tri { translate: calc(var(--mx, 0) * 34px) calc(var(--my, 0) * 34px); }

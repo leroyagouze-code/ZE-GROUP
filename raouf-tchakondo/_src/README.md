@@ -34,7 +34,7 @@ python3 -m http.server 8000   # depuis la racine du dépôt
 
 - Les 8 rubriques + contact/booking, en FR (`/`) et EN (`/en/`), URL distinctes et bascule en un clic.
 - Une fiche par création, avec forme géométrique propre et bouton « Programmer cette pièce » (formulaire pré-rempli).
-- Carrousel 3D de la série photo sur l'accueil (CSS 3D, sans bibliothèque) : rotation lente, glisser avec inertie, flèches, clavier, pause ; immobile si « réduire les animations ». Parallaxe du visuel d'ouverture au survol.
+- Ouverture de l'accueil en plein écran : la photo du saut (« Envol ») en fond, fondue dans la terre cuite, avec un léger zoom d'entrée.
 - Ouverture « point → cercle » (une fois par session), ligne animée au scroll qui dessine des figures, carte des tournées par année.
 - Agenda avec filtre par pays, ajout au calendrier (.ics), places restantes.
 - Inscription aux stages avec choix de session, nombre de places, total, choix T-Money / Flooz / Moov Money / carte.
@@ -47,7 +47,7 @@ python3 -m http.server 8000   # depuis la racine du dépôt
 
 | Fichier (`assets/img/`) | Sujet | Crédit / source |
 | --- | --- | --- |
-| `envol-*`, `equilibre-*`, `ailes-*`, `elan-*`, `poing-*` (+ `-carte-*`, `envol-carre-*`) | Série en blanc au bord de la lagune : carrousel 3D de l'accueil, ouverture de l'accueil, Biographie, Le langage, Presse | Transmise par Raouf, © Siaka S. Traoré |
+| `envol-*`, `equilibre-*`, `ailes-*`, `elan-*`, `poing-*` | Série en blanc au bord de la lagune : fond de l'ouverture de l'accueil (saut), mosaïque, Biographie, Le langage, Presse | Transmise par Raouf, © Siaka S. Traoré |
 | `sable-*`, `sable-carre-*` | Raouf mène un cours sur le sable (pantalon rouge) — photo principale de l'accueil | Transmise par Raouf, © DR (photographe à préciser) |
 | `loose-control-*` | Raouf au premier plan, grand groupe à l'École des Sables | Transmise par Raouf, © Siaka S. Traoré |
 | `joie-*` | Danseuses et danseurs qui rient, bras ouverts | Transmise par Raouf, © Siaka S. Traoré |
