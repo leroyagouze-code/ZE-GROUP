@@ -1,9 +1,12 @@
 const fs = require("fs");
 const path = require("path");
+const { DEFAULT_CONTENT, DEFAULT_NAV } = require("./content-schema");
 
 const DATA_DIR = path.join(__dirname, "..", "data");
 const PRODUCTS_FILE = path.join(DATA_DIR, "products.json");
 const SETTINGS_FILE = path.join(DATA_DIR, "settings.json");
+const CONTENT_FILE = path.join(DATA_DIR, "content.json");
+const NAV_FILE = path.join(DATA_DIR, "nav.json");
 
 function ensureDataDir() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -55,5 +58,22 @@ module.exports = {
   },
   saveSettings(settings) {
     writeJSON(SETTINGS_FILE, settings);
+  },
+
+  CONTENT_FILE,
+  getContent() {
+    return Object.assign({}, DEFAULT_CONTENT, readJSON(CONTENT_FILE, {}));
+  },
+  saveContent(content) {
+    writeJSON(CONTENT_FILE, content);
+  },
+
+  NAV_FILE,
+  getNav() {
+    const nav = readJSON(NAV_FILE, null);
+    return nav && nav.length ? nav : DEFAULT_NAV.slice();
+  },
+  saveNav(nav) {
+    writeJSON(NAV_FILE, nav);
   },
 };

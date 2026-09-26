@@ -34,12 +34,19 @@ Pour arrêter le serveur : retournez dans le terminal et appuyez sur `Ctrl + C`.
 
 - **Produits** : ajouter, modifier, supprimer, changer le prix, la photo, le
   stock (« en stock » / « sur commande »), le masquer temporairement du site.
+- **Contenu des pages** : les titres, textes et photos principales de chaque
+  page (Accueil, À propos, Services, Produits, Réalisations, Catalogue,
+  Contact) — remplace le contenu écrit dans le code par ce que vous saisissez.
+- **Menu** : renommer les liens du menu, changer leur ordre, en ajouter de
+  nouveaux, ou en masquer un temporairement (sans le supprimer). Pour une
+  suppression définitive, contactez-nous.
 - **Paramètres du site** : le numéro de téléphone/WhatsApp affiché partout,
   l'e-mail, les liens Facebook et TikTok, l'adresse.
 
 Ce que vous ne pouvez **pas encore** modifier depuis `/admin` (ça reste dans
-le code pour l'instant) : les textes des pages (Accueil, À propos, Services...)
-et les photos de décor (hero, galerie). C'est un chantier possible pour une
+le code pour l'instant) : la mise en page elle-même (ordre des sections,
+couleurs, polices), les listes à puces détaillées dans « Nos services », et
+les photos d'ambiance des galeries. C'est un chantier possible pour une
 prochaine étape si vous en avez besoin.
 
 ## Mettre le site en ligne pour de vrai (déploiement)

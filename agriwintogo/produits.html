@@ -66,12 +66,14 @@
       <span class="brand-text"><strong>Menu</strong></span>
       <button class="mobile-nav-close" id="navClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
+    <div id="mobileNavLinks">
     <a href="a-propos.html">À propos</a>
     <a href="services.html">Nos services</a>
     <a href="produits.html" class="active">Nos produits</a>
     <a href="realisations.html">Nos réalisations</a>
     <a href="catalogue.html">Catalogue</a>
     <a href="contact.html">Contact</a>
+    </div>
     <div class="mobile-nav-actions">
       <a href="tel:+22896638200" class="btn btn-call btn-block">Appeler maintenant</a>
       <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">Discuter sur WhatsApp</a>
@@ -82,19 +84,19 @@
 <main id="main">
 
 <section class="photo-hero hero-sm">
-  <img src="images/photos/seedling-tray-band-web.jpg" alt="Plateau de jeunes plants en pépinière" width="1920" height="640" loading="eager">
+  <img src="images/photos/seedling-tray-band-web.jpg" alt="Plateau de jeunes plants en pépinière" width="1920" height="640" loading="eager" data-ck="produits.hero.image">
   <div class="container">
     <div class="hero-breadcrumb"><a href="index.html">Accueil</a> / Nos produits</div>
-    <h1>Des produits agricoles de qualité, prêts à planter ou à élever</h1>
-    <p class="lead">Arbres fruitiers, agrumes, épices, herbes aromatiques et plantes d'ornement — plus de 50 plants sélectionnés et suivis en pépinière.</p>
+    <h1 data-ck="produits.hero.title">Des produits agricoles de qualité, prêts à planter ou à élever</h1>
+    <p class="lead" data-ck="produits.hero.lead">Arbres fruitiers, agrumes, épices, herbes aromatiques et plantes d'ornement — plus de 50 plants sélectionnés et suivis en pépinière.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Nos familles de produits</span>
-      <h2>Tout ce qu'il faut pour démarrer ou développer votre production</h2>
+      <span class="eyebrow" data-ck="produits.families.eyebrow">Nos familles de produits</span>
+      <h2 data-ck="produits.families.title">Tout ce qu'il faut pour démarrer ou développer votre production</h2>
     </div>
     <div class="grid grid-3">
       <div class="card">
@@ -144,13 +146,13 @@
 <section class="section bg-soft">
   <div class="container two-col">
     <div class="img-frame">
-      <img src="images/photos/nursery-hands-seedling-web.jpg" alt="Plants tropicaux AgriWin Togo" width="1920" height="1279" loading="lazy">
+      <img src="images/photos/nursery-hands-seedling-web.jpg" alt="Plants tropicaux AgriWin Togo" width="1920" height="1279" loading="lazy" data-ck="produits.specialty.image">
     </div>
     <div>
-      <span class="eyebrow">Notre spécialité</span>
+      <span class="eyebrow" data-ck="produits.specialty.eyebrow">Notre spécialité</span>
       <h2>Les plants tropicaux, <span class="accent-italic">notre cœur de métier</span></h2>
-      <p>AgriWin Togo met un accent particulier sur la production de plants tropicaux à forte valeur ajoutée : manguiers, avocatiers, cocotiers, agrumes et bien d'autres variétés très recherchées par les investisseurs agricoles.</p>
-      <p>Chaque plant est suivi en pépinière avant livraison, pour garantir un taux de reprise élevé une fois mis en terre. Nous proposons également des commandes en gros pour les projets de vergers et de reboisement.</p>
+      <p data-ck="produits.specialty.p1">AgriWin Togo met un accent particulier sur la production de plants tropicaux à forte valeur ajoutée : manguiers, avocatiers, cocotiers, agrumes et bien d'autres variétés très recherchées par les investisseurs agricoles.</p>
+      <p data-ck="produits.specialty.p2">Chaque plant est suivi en pépinière avant livraison, pour garantir un taux de reprise élevé une fois mis en terre. Nous proposons également des commandes en gros pour les projets de vergers et de reboisement.</p>
       <div class="btn-group">
         <a href="catalogue.html" class="btn btn-green">Consulter le catalogue</a>
         <a href="contact.html" class="btn btn-outline-green">Commande en gros / devis</a>
@@ -163,8 +165,8 @@
   <div class="container">
     <div class="cta-band">
       <div class="cta-text">
-        <h2>Prêt à passer commande ?</h2>
-        <p>Consultez notre catalogue avec photos, descriptions et prix indicatifs, puis commandez en un clic via WhatsApp.</p>
+        <h2 data-ck="produits.cta.title">Prêt à passer commande ?</h2>
+        <p data-ck="produits.cta.text">Consultez notre catalogue avec photos, descriptions et prix indicatifs, puis commandez en un clic via WhatsApp.</p>
       </div>
       <div class="btn-group">
         <a href="catalogue.html" class="btn btn-primary">Voir le catalogue complet</a>
@@ -191,7 +193,7 @@
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
-        <ul>
+        <ul id="footerNavLinks">
           <li><a href="index.html">Accueil</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="services.html">Nos services</a></li>
@@ -233,6 +235,7 @@
   <button class="fab fab-top" id="fabTop" aria-label="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 </div>
 
+<script src="js/content.js"></script>
 <script src="js/site-config.js"></script>
 <script src="js/main.js"></script>
 </body>

@@ -88,12 +88,14 @@
       <span class="brand-text"><strong>Menu</strong></span>
       <button class="mobile-nav-close" id="navClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
+    <div id="mobileNavLinks">
     <a href="a-propos.html">À propos</a>
     <a href="services.html">Nos services</a>
     <a href="produits.html">Nos produits</a>
     <a href="realisations.html">Nos réalisations</a>
     <a href="catalogue.html">Catalogue</a>
     <a href="contact.html">Contact</a>
+    </div>
     <div class="mobile-nav-actions">
       <a href="tel:+22896638200" class="btn btn-call btn-block">Appeler maintenant</a>
       <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">Discuter sur WhatsApp</a>
@@ -104,12 +106,12 @@
 <main id="main">
 
 <section class="photo-hero">
-  <img src="images/photos/nursery-hands-seedling-web.jpg" alt="Mains tenant un jeune plant en pépinière" width="1920" height="1279" loading="eager">
+  <img src="images/photos/nursery-hands-seedling-web.jpg" alt="Mains tenant un jeune plant en pépinière" width="1920" height="1279" loading="eager" data-ck="index.hero.image">
   <div class="container">
     <div class="photo-hero-content">
-      <span class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Fondée en 2025 — Basée à Kégué, Togo</span>
-      <h1>Chaque plant compte. Chaque projet mérite un partenaire de confiance.</h1>
-      <p class="lead">AgriWin Togo accompagne particuliers, entreprises, porteurs de projets et ONG : conseil agricole, formation, plants tropicaux et écoulement de produits — au Togo, en Afrique de l'Ouest et à l'international.</p>
+      <span class="hero-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> <span data-ck="index.hero.badge">Fondée en 2025 — Basée à Kégué, Togo</span></span>
+      <h1 data-ck="index.hero.title">Chaque plant compte. Chaque projet mérite un partenaire de confiance.</h1>
+      <p class="lead" data-ck="index.hero.lead">AgriWin Togo accompagne particuliers, entreprises, porteurs de projets et ONG : conseil agricole, formation, plants tropicaux et écoulement de produits — au Togo, en Afrique de l'Ouest et à l'international.</p>
       <div class="btn-group" style="margin-top:28px;">
         <a href="catalogue.html" class="btn btn-primary">Voir le catalogue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-outline">Demander un devis</a>
@@ -117,8 +119,8 @@
     </div>
   </div>
   <div class="hero-credential">
-    <strong>Une pépinière suivie de près</strong>
-    <span>Chaque plant est sélectionné et contrôlé avant livraison, pour un taux de reprise élevé sur le terrain.</span>
+    <strong data-ck="index.hero.credentialTitle">Une pépinière suivie de près</strong>
+    <span data-ck="index.hero.credentialText">Chaque plant est sélectionné et contrôlé avant livraison, pour un taux de reprise élevé sur le terrain.</span>
   </div>
 </section>
 
@@ -140,10 +142,10 @@
       <h2>Le mot du fondateur</h2>
     </div>
     <div class="portrait-quote">
-      <img src="images/photos/farmer-portrait-web.jpg" alt="Portrait de style pour la direction créative du site" width="1000" height="930" loading="lazy">
+      <img src="images/photos/farmer-portrait-web.jpg" alt="Portrait de style pour la direction créative du site" width="1000" height="930" loading="lazy" data-ck="index.quote.image">
       <div>
-        <blockquote>« Nous voulons que chaque client, qu'il soit à Kégué ou à l'international, reçoive des plants de qualité et un accompagnement dans lequel il peut avoir une confiance totale. C'est notre engagement depuis le premier jour. »</blockquote>
-        <cite>KEGNON Emmanuel<span>Fondateur & CEO, AgriWin Togo</span></cite>
+        <blockquote data-ck="index.quote.text">« Nous voulons que chaque client, qu'il soit à Kégué ou à l'international, reçoive des plants de qualité et un accompagnement dans lequel il peut avoir une confiance totale. C'est notre engagement depuis le premier jour. »</blockquote>
+        <cite><span data-ck="index.quote.author">KEGNON Emmanuel</span><span data-ck="index.quote.role">Fondateur & CEO, AgriWin Togo</span></cite>
       </div>
     </div>
     <p class="mood-note">Portrait présenté à titre de style — sera remplacé par une photo du fondateur ou de l'équipe AgriWin Togo dès qu'elle nous sera transmise.</p>
@@ -153,7 +155,7 @@
 <section class="section bg-soft">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Ce que nous faisons</span>
+      <span class="eyebrow" data-ck="index.expertise.eyebrow">Ce que nous faisons</span>
       <h2>Une expertise agricole complète, <span class="accent-italic">sur le terrain</span></h2>
     </div>
     <div class="grid grid-3" style="margin-bottom:22px;">
@@ -206,12 +208,12 @@
 </section>
 
 <section class="photo-band">
-  <img src="images/photos/seedling-tray-band-web.jpg" alt="Plateau de jeunes plants en pépinière" loading="lazy">
+  <img src="images/photos/seedling-tray-band-web.jpg" alt="Plateau de jeunes plants en pépinière" loading="lazy" data-ck="index.specialty.image">
   <div class="container">
     <div class="photo-band-content">
-      <span class="eyebrow">Notre spécialité</span>
-      <h2>Des plants tropicaux suivis du semis jusqu'à la livraison</h2>
-      <p>Manguiers, avocatiers, cocotiers, agrumes, teck, moringa... chaque plant est contrôlé avant de quitter notre pépinière de Kégué.</p>
+      <span class="eyebrow" data-ck="index.specialty.eyebrow">Notre spécialité</span>
+      <h2 data-ck="index.specialty.title">Des plants tropicaux suivis du semis jusqu'à la livraison</h2>
+      <p data-ck="index.specialty.text">Manguiers, avocatiers, cocotiers, agrumes, teck, moringa... chaque plant est contrôlé avant de quitter notre pépinière de Kégué.</p>
       <a href="catalogue.html" class="btn btn-primary" style="margin-top:8px;">Découvrir nos plants</a>
     </div>
   </div>
@@ -235,8 +237,8 @@
 <section class="section bg-soft">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Ambiance & terrain</span>
-      <h2>Le travail de la terre, au quotidien</h2>
+      <span class="eyebrow" data-ck="index.gallery.eyebrow">Ambiance & terrain</span>
+      <h2 data-ck="index.gallery.title">Le travail de la terre, au quotidien</h2>
     </div>
     <div class="mood-gallery">
       <div class="mood-item">
@@ -260,8 +262,8 @@
   <div class="container">
     <div class="cta-band">
       <div class="cta-text">
-        <h2>Un projet agricole en tête ?</h2>
-        <p>Décrivez-nous votre besoin : nos experts vous répondent rapidement avec une solution adaptée et un devis clair.</p>
+        <h2 data-ck="index.cta.title">Un projet agricole en tête ?</h2>
+        <p data-ck="index.cta.text">Décrivez-nous votre besoin : nos experts vous répondent rapidement avec une solution adaptée et un devis clair.</p>
       </div>
       <div class="btn-group">
         <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp">Discuter sur WhatsApp</a>
@@ -289,7 +291,7 @@
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
-        <ul>
+        <ul id="footerNavLinks">
           <li><a href="index.html">Accueil</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="services.html">Nos services</a></li>
@@ -331,6 +333,7 @@
   <button class="fab fab-top" id="fabTop" aria-label="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 </div>
 
+<script src="js/content.js"></script>
 <script src="js/site-config.js"></script>
 <script src="js/products.js"></script>
 <script src="js/featured.js"></script>

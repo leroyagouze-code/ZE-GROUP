@@ -77,6 +77,11 @@ h1, h2, h3 { font-family: var(--font-head); color: var(--green-950); }
 .admin-flash-error { background: #fdecea; color: var(--red-600); border: 1px solid #f3b6ae; }
 
 .admin-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.admin-card-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.admin-card-link { text-decoration: none; color: inherit; transition: box-shadow .15s ease, border-color .15s ease; }
+.admin-card-link:hover { border-color: var(--green-600); box-shadow: 0 6px 16px rgba(15,61,23,.1); }
+.admin-card-link h3 { margin: 0 0 6px; font-size: 16px; }
+.admin-inline-form { margin: 0; }
 
 .admin-table-wrap { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 table.admin-table { width: 100%; border-collapse: collapse; }

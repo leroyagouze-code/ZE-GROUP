@@ -11,6 +11,8 @@ function escapeHtml(str) {
 function adminLayout({ title, active, flash, body }) {
   const nav = [
     { href: "/admin/produits", label: "Produits", key: "produits" },
+    { href: "/admin/contenu", label: "Contenu des pages", key: "contenu" },
+    { href: "/admin/menu", label: "Menu", key: "menu" },
     { href: "/admin/parametres", label: "Paramètres du site", key: "parametres" },
   ];
 

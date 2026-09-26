@@ -66,12 +66,14 @@
       <span class="brand-text"><strong>Menu</strong></span>
       <button class="mobile-nav-close" id="navClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
+    <div id="mobileNavLinks">
     <a href="a-propos.html">À propos</a>
     <a href="services.html" class="active">Nos services</a>
     <a href="produits.html">Nos produits</a>
     <a href="realisations.html">Nos réalisations</a>
     <a href="catalogue.html">Catalogue</a>
     <a href="contact.html">Contact</a>
+    </div>
     <div class="mobile-nav-actions">
       <a href="tel:+22896638200" class="btn btn-call btn-block">Appeler maintenant</a>
       <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">Discuter sur WhatsApp</a>
@@ -82,11 +84,11 @@
 <main id="main">
 
 <section class="photo-hero hero-sm">
-  <img src="images/photos/nursery-hands-seedling-web.jpg" alt="Mains tenant un jeune plant en pépinière" width="1920" height="1279" loading="eager">
+  <img src="images/photos/nursery-hands-seedling-web.jpg" alt="Mains tenant un jeune plant en pépinière" width="1920" height="1279" loading="eager" data-ck="services.hero.image">
   <div class="container">
     <div class="hero-breadcrumb"><a href="index.html">Accueil</a> / Nos services</div>
-    <h1>Des services agricoles complets, pensés pour votre réussite</h1>
-    <p class="lead">Du conseil à la commercialisation, en passant par la formation et la fourniture de plants, AgriWin Togo vous accompagne à chaque étape de votre projet agricole.</p>
+    <h1 data-ck="services.hero.title">Des services agricoles complets, pensés pour votre réussite</h1>
+    <p class="lead" data-ck="services.hero.lead">Du conseil à la commercialisation, en passant par la formation et la fourniture de plants, AgriWin Togo vous accompagne à chaque étape de votre projet agricole.</p>
   </div>
 </section>
 
@@ -96,8 +98,8 @@
     <div id="conseil" class="two-col" style="margin-bottom:70px; scroll-margin-top:100px;">
       <div>
         <span class="eyebrow">Service 01</span>
-        <h2>Expertise & conseil agricole</h2>
-        <p>Nous réalisons le diagnostic de vos terrains, étudions la faisabilité de votre projet et vous recommandons les cultures, plants ou élevages les plus adaptés à votre sol, votre climat et vos objectifs.</p>
+        <h2 data-ck="services.conseil.title">Expertise & conseil agricole</h2>
+        <p data-ck="services.conseil.text">Nous réalisons le diagnostic de vos terrains, étudions la faisabilité de votre projet et vous recommandons les cultures, plants ou élevages les plus adaptés à votre sol, votre climat et vos objectifs.</p>
         <ul style="margin:20px 0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Étude de sol et de faisabilité technique</span></li>
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Montage technique de projets agricoles</span></li>
@@ -109,11 +111,11 @@
     </div>
 
     <div id="prestations" class="two-col reverse" style="margin-bottom:70px; scroll-margin-top:100px;">
-      <div class="img-frame col-img"><img src="images/photos/man-planting-tree-web.jpg" alt="Prestations de services agricoles" width="1600" height="1236" loading="lazy"></div>
+      <div class="img-frame col-img"><img src="images/photos/man-planting-tree-web.jpg" alt="Prestations de services agricoles" width="1600" height="1236" loading="lazy" data-ck="services.prestations.image"></div>
       <div>
         <span class="eyebrow">Service 02</span>
-        <h2>Prestations de services agricoles</h2>
-        <p>Nous exécutons pour vous les travaux agricoles : préparation de terrain, plantation, entretien des cultures et suivi technique régulier, pour des résultats fiables et mesurables.</p>
+        <h2 data-ck="services.prestations.title">Prestations de services agricoles</h2>
+        <p data-ck="services.prestations.text">Nous exécutons pour vous les travaux agricoles : préparation de terrain, plantation, entretien des cultures et suivi technique régulier, pour des résultats fiables et mesurables.</p>
         <ul style="margin:20px 0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Défrichage et préparation de terrain</span></li>
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Plantation et mise en terre encadrée</span></li>
@@ -126,8 +128,8 @@
     <div id="formation" class="two-col" style="margin-bottom:70px; scroll-margin-top:100px;">
       <div>
         <span class="eyebrow">Service 03</span>
-        <h2>Formation agricole</h2>
-        <p>Nous formons particuliers, coopératives et porteurs de projets aux techniques agricoles modernes : pépinière, greffage, maraîchage, élevage et gestion d'exploitation.</p>
+        <h2 data-ck="services.formation.title">Formation agricole</h2>
+        <p data-ck="services.formation.text">Nous formons particuliers, coopératives et porteurs de projets aux techniques agricoles modernes : pépinière, greffage, maraîchage, élevage et gestion d'exploitation.</p>
         <ul style="margin:20px 0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Formations individuelles ou en groupe</span></li>
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Sessions pratiques sur le terrain</span></li>
@@ -139,11 +141,11 @@
     </div>
 
     <div id="ecoulement" class="two-col reverse" style="margin-bottom:70px; scroll-margin-top:100px;">
-      <div class="img-frame col-img"><img src="images/photos/woman-market-web.jpg" alt="Écoulement de produits agricoles" width="1400" height="1866" loading="lazy"></div>
+      <div class="img-frame col-img"><img src="images/photos/woman-market-web.jpg" alt="Écoulement de produits agricoles" width="1400" height="1866" loading="lazy" data-ck="services.ecoulement.image"></div>
       <div>
         <span class="eyebrow">Service 04</span>
-        <h2>Écoulement de produits agricoles</h2>
-        <p>Nous aidons les producteurs à trouver des débouchés fiables pour leurs récoltes, en les mettant en relation avec des acheteurs locaux et internationaux.</p>
+        <h2 data-ck="services.ecoulement.title">Écoulement de produits agricoles</h2>
+        <p data-ck="services.ecoulement.text">Nous aidons les producteurs à trouver des débouchés fiables pour leurs récoltes, en les mettant en relation avec des acheteurs locaux et internationaux.</p>
         <ul style="margin:20px 0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Mise en relation acheteurs / producteurs</span></li>
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Appui à la commercialisation locale et export</span></li>
@@ -156,8 +158,8 @@
     <div id="pepiniere" class="two-col" style="margin-bottom:70px; scroll-margin-top:100px;">
       <div>
         <span class="eyebrow">Service 05</span>
-        <h2>Pépinière & plants tropicaux</h2>
-        <p>Notre spécialité : la production et la vente de plants tropicaux très recherchés — manguiers, avocatiers, cocotiers, agrumes, teck et bien d'autres — prêts à être mis en terre.</p>
+        <h2 data-ck="services.pepiniere.title">Pépinière & plants tropicaux</h2>
+        <p data-ck="services.pepiniere.text">Notre spécialité : la production et la vente de plants tropicaux très recherchés — manguiers, avocatiers, cocotiers, agrumes, teck et bien d'autres — prêts à être mis en terre.</p>
         <ul style="margin:20px 0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Plants greffés à croissance rapide</span></li>
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Commandes en gros pour vergers et reboisement</span></li>
@@ -165,15 +167,15 @@
         </ul>
         <a href="catalogue.html" class="btn btn-green">Voir les plants disponibles</a>
       </div>
-      <div class="img-frame"><img src="images/photos/nursery-hands-seedling-web.jpg" alt="Pépinière et plants tropicaux" width="1920" height="1279" loading="lazy"></div>
+      <div class="img-frame"><img src="images/photos/nursery-hands-seedling-web.jpg" alt="Pépinière et plants tropicaux" width="1920" height="1279" loading="lazy" data-ck="services.pepiniere.image"></div>
     </div>
 
     <div id="elevage" class="two-col reverse" style="scroll-margin-top:100px;">
       <div class="img-frame col-img"><img src="images/placeholders/service-elevage.svg" alt="Accompagnement en élevage" width="800" height="600" loading="lazy"></div>
       <div>
         <span class="eyebrow">Service 06</span>
-        <h2>Accompagnement en élevage</h2>
-        <p>Nous conseillons et fournissons des sujets d'élevage (volaille, petits ruminants) pour vous aider à démarrer ou développer une activité d'élevage rentable et bien encadrée.</p>
+        <h2 data-ck="services.elevage.title">Accompagnement en élevage</h2>
+        <p data-ck="services.elevage.text">Nous conseillons et fournissons des sujets d'élevage (volaille, petits ruminants) pour vous aider à démarrer ou développer une activité d'élevage rentable et bien encadrée.</p>
         <ul style="margin:20px 0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Fourniture de sujets sélectionnés</span></li>
           <li style="display:flex;gap:10px;align-items:flex-start;"><svg width="20" height="20" style="color:var(--green-700);flex:none;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Conseil en installation et suivi sanitaire</span></li>
@@ -190,8 +192,8 @@
   <div class="container">
     <div class="cta-band" style="background:none;padding:0;">
       <div class="cta-text">
-        <h2>Un besoin sur mesure ?</h2>
-        <p>Chaque projet agricole est unique. Contactez-nous pour une solution adaptée à votre terrain et à votre budget.</p>
+        <h2 data-ck="services.cta.title">Un besoin sur mesure ?</h2>
+        <p data-ck="services.cta.text">Chaque projet agricole est unique. Contactez-nous pour une solution adaptée à votre terrain et à votre budget.</p>
       </div>
       <div class="btn-group">
         <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp">Discuter sur WhatsApp</a>
@@ -219,7 +221,7 @@
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
-        <ul>
+        <ul id="footerNavLinks">
           <li><a href="index.html">Accueil</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="services.html">Nos services</a></li>
@@ -261,6 +263,7 @@
   <button class="fab fab-top" id="fabTop" aria-label="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 </div>
 
+<script src="js/content.js"></script>
 <script src="js/site-config.js"></script>
 <script src="js/main.js"></script>
 </body>

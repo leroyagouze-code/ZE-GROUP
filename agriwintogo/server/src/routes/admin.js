@@ -7,6 +7,7 @@ const multer = require("multer");
 const db = require("../db");
 const { checkCredentials, requireAuth } = require("../auth");
 const { adminLayout, loginLayout, escapeHtml } = require("../../views/layout");
+const { PAGES } = require("../content-schema");
 
 const router = express.Router();
 
@@ -37,6 +38,28 @@ const storage = multer.diskStorage({
 });
 const upload = multer({
   storage,
+  limits: { fileSize: 3 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    if (!/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(file.mimetype)) {
+      return cb(new Error("Le fichier doit être une image (JPG, PNG, WEBP...)."));
+    }
+    cb(null, true);
+  },
+});
+
+const CONTENT_UPLOAD_DIR = path.join(__dirname, "..", "..", "..", "images", "content");
+fs.mkdirSync(CONTENT_UPLOAD_DIR, { recursive: true });
+
+const contentStorage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, CONTENT_UPLOAD_DIR),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase() || ".jpg";
+    const safeField = file.fieldname.replace(/[^a-z0-9]+/gi, "-");
+    cb(null, `${req.params.pageId}-${safeField}-${Date.now()}${crypto.randomBytes(3).toString("hex")}${ext}`);
+  },
+});
+const uploadContent = multer({
+  storage: contentStorage,
   limits: { fileSize: 3 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (!/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(file.mimetype)) {
@@ -333,6 +356,251 @@ router.post("/produits/:id/supprimer", requireAuth, (req, res) => {
   }
   setFlash(req, "success", `Produit « ${removed.name} » supprimé.`);
   res.redirect("/admin/produits");
+});
+
+/* ---------- Contenu des pages ---------- */
+
+router.get("/contenu", requireAuth, (req, res) => {
+  const cards = Object.keys(PAGES)
+    .map((pageId) => {
+      const page = PAGES[pageId];
+      return `
+        <a class="admin-card admin-card-link" href="/admin/contenu/${pageId}">
+          <h3>${escapeHtml(page.label)}</h3>
+          <p class="hint">${page.fields.length} éléments modifiables (textes${page.fields.some((f) => f.type === "image") ? " et photos" : ""})</p>
+        </a>`;
+    })
+    .join("");
+
+  const body = `
+    <div class="admin-page-head">
+      <div>
+        <h1>Contenu des pages</h1>
+        <p>Choisissez une page pour modifier ses titres, ses textes et ses photos. Les éléments de structure (boutons, icônes) ne sont pas modifiables ici.</p>
+      </div>
+    </div>
+    <div class="admin-card-grid">${cards}</div>`;
+
+  res.send(adminLayout({ title: "Contenu des pages", active: "contenu", flash: popFlash(req), body }));
+});
+
+router.get("/contenu/:pageId", requireAuth, (req, res) => {
+  const page = PAGES[req.params.pageId];
+  if (!page) {
+    setFlash(req, "error", "Page introuvable.");
+    return res.redirect("/admin/contenu");
+  }
+  const content = db.getContent();
+  const fieldsHtml = page.fields
+    .map((field) => {
+      const fullKey = `${req.params.pageId}.${field.key}`;
+      const value = content[fullKey] != null ? content[fullKey] : field.default;
+      if (field.type === "image") {
+        return `
+          <div class="admin-field full">
+            <label>${escapeHtml(field.label)}</label>
+            <div class="admin-current-image"><img src="/${escapeHtml(value)}" alt=""><span class="hint">Photo actuelle — choisissez un fichier ci-dessous pour la remplacer.</span></div>
+            <input type="file" name="${escapeHtml(field.key)}" accept="image/*">
+            <span class="hint">JPG, PNG ou WEBP, 3 Mo maximum. Laissez vide pour garder la photo actuelle.</span>
+          </div>`;
+      }
+      if (field.type === "textarea") {
+        return `
+          <div class="admin-field full">
+            <label>${escapeHtml(field.label)}
+              <textarea name="${escapeHtml(field.key)}" rows="3">${escapeHtml(value)}</textarea>
+            </label>
+          </div>`;
+      }
+      return `
+        <div class="admin-field full">
+          <label>${escapeHtml(field.label)}
+            <input type="text" name="${escapeHtml(field.key)}" value="${escapeHtml(value)}">
+          </label>
+        </div>`;
+    })
+    .join("");
+
+  const body = `
+    <div class="admin-page-head">
+      <div>
+        <h1>Contenu — ${escapeHtml(page.label)}</h1>
+        <p>Les modifications apparaissent immédiatement sur le site public.</p>
+      </div>
+    </div>
+    <div class="admin-card">
+      <form class="admin-form" method="POST" action="/admin/contenu/${req.params.pageId}" enctype="multipart/form-data">
+        ${fieldsHtml}
+        <div class="admin-form-actions">
+          <button type="submit" class="admin-btn admin-btn-primary">Enregistrer</button>
+          <a href="/admin/contenu" class="admin-btn admin-btn-outline">Annuler</a>
+        </div>
+      </form>
+    </div>`;
+
+  res.send(adminLayout({ title: `Contenu — ${page.label}`, active: "contenu", flash: popFlash(req), body }));
+});
+
+router.post("/contenu/:pageId", requireAuth, (req, res, next) => {
+  const page = PAGES[req.params.pageId];
+  if (!page) {
+    setFlash(req, "error", "Page introuvable.");
+    return res.redirect("/admin/contenu");
+  }
+  const imageFields = page.fields.filter((f) => f.type === "image").map((f) => ({ name: f.key, maxCount: 1 }));
+  uploadContent.fields(imageFields)(req, res, (err) => {
+    if (err) {
+      setFlash(req, "error", err.message);
+      return res.redirect(`/admin/contenu/${req.params.pageId}`);
+    }
+    next();
+  });
+}, (req, res) => {
+  const page = PAGES[req.params.pageId];
+  const content = db.getContent();
+  const files = req.files || {};
+
+  for (const field of page.fields) {
+    const fullKey = `${req.params.pageId}.${field.key}`;
+    if (field.type === "image") {
+      if (files[field.key] && files[field.key][0]) {
+        content[fullKey] = `images/content/${files[field.key][0].filename}`;
+      }
+      // pas de fichier envoyé : on garde la photo actuelle
+    } else {
+      content[fullKey] = (req.body[field.key] || "").trim();
+    }
+  }
+  db.saveContent(content);
+  setFlash(req, "success", `Contenu de « ${page.label} » mis à jour.`);
+  res.redirect(`/admin/contenu/${req.params.pageId}`);
+});
+
+/* ---------- Menu du site ---------- */
+
+router.get("/menu", requireAuth, (req, res) => {
+  const nav = db.getNav().slice().sort((a, b) => a.order - b.order);
+  const rows = nav
+    .map(
+      (item, i) => `
+      <tr>
+        <td colspan="2">
+          <form method="POST" action="/admin/menu/${item.id}" class="admin-inline-form" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <input type="text" name="label" value="${escapeHtml(item.label)}" required style="min-width:160px;" placeholder="Texte affiché">
+            <input type="text" name="href" value="${escapeHtml(item.href)}" required style="min-width:160px;" placeholder="Page cible">
+            <button type="submit" class="admin-btn admin-btn-outline admin-btn-sm">Enregistrer</button>
+          </form>
+        </td>
+        <td style="white-space:nowrap;">
+          <form method="POST" action="/admin/menu/${item.id}/deplacer" class="admin-inline-form" style="display:inline;">
+            <input type="hidden" name="direction" value="haut">
+            <button type="submit" class="admin-btn admin-btn-outline admin-btn-sm" ${i === 0 ? "disabled" : ""}>↑</button>
+          </form>
+          <form method="POST" action="/admin/menu/${item.id}/deplacer" class="admin-inline-form" style="display:inline;">
+            <input type="hidden" name="direction" value="bas">
+            <button type="submit" class="admin-btn admin-btn-outline admin-btn-sm" ${i === nav.length - 1 ? "disabled" : ""}>↓</button>
+          </form>
+        </td>
+        <td>
+          <form method="POST" action="/admin/menu/${item.id}/visibilite" class="admin-inline-form">
+            <input type="hidden" name="hidden" value="${item.hidden ? "0" : "1"}">
+            <button type="submit" class="admin-btn ${item.hidden ? "admin-btn-outline" : "admin-btn-primary"} admin-btn-sm">${item.hidden ? "Masqué — afficher" : "Visible — masquer"}</button>
+          </form>
+        </td>
+      </tr>`
+    )
+    .join("");
+
+  const body = `
+    <div class="admin-page-head">
+      <div>
+        <h1>Menu du site</h1>
+        <p>Renommez les liens, changez leur ordre (↑ ↓), ou masquez-en un temporairement. Pour supprimer définitivement un lien, contactez-nous d'abord.</p>
+      </div>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Texte affiché</th><th>Lien (page cible)</th><th></th><th>Ordre</th><th>Statut</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div class="admin-card" style="margin-top:24px;">
+      <h3 style="margin-top:0;">Ajouter un lien au menu</h3>
+      <form class="admin-form" method="POST" action="/admin/menu">
+        <div class="admin-field">
+          <label>Texte affiché
+            <input type="text" name="label" required placeholder="Ex. Blog">
+          </label>
+        </div>
+        <div class="admin-field">
+          <label>Page cible
+            <input type="text" name="href" required placeholder="Ex. contact.html ou services.html#conseil">
+          </label>
+          <span class="hint">Nom exact du fichier de la page (index.html, a-propos.html...), ou une adresse complète (https://...) pour un lien externe.</span>
+        </div>
+        <div class="admin-form-actions">
+          <button type="submit" class="admin-btn admin-btn-primary">Ajouter au menu</button>
+        </div>
+      </form>
+    </div>`;
+
+  res.send(adminLayout({ title: "Menu", active: "menu", flash: popFlash(req), body }));
+});
+
+router.post("/menu", requireAuth, express.urlencoded({ extended: true }), (req, res) => {
+  const nav = db.getNav();
+  const label = (req.body.label || "").trim();
+  const href = (req.body.href || "").trim();
+  if (!label || !href) {
+    setFlash(req, "error", "Le texte et le lien sont obligatoires.");
+    return res.redirect("/admin/menu");
+  }
+  let id = slugify(label) || "lien";
+  if (nav.some((item) => item.id === id)) id = id + "-" + Date.now().toString(36);
+  const maxOrder = nav.reduce((max, item) => Math.max(max, item.order), 0);
+  nav.push({ id, label, href, order: maxOrder + 1, hidden: false });
+  db.saveNav(nav);
+  setFlash(req, "success", `Lien « ${label} » ajouté au menu.`);
+  res.redirect("/admin/menu");
+});
+
+router.post("/menu/:id", requireAuth, express.urlencoded({ extended: true }), (req, res) => {
+  const nav = db.getNav();
+  const item = nav.find((i) => i.id === req.params.id);
+  if (!item) {
+    setFlash(req, "error", "Lien introuvable.");
+    return res.redirect("/admin/menu");
+  }
+  item.label = (req.body.label || item.label).trim();
+  item.href = (req.body.href || item.href).trim();
+  db.saveNav(nav);
+  setFlash(req, "success", "Menu mis à jour.");
+  res.redirect("/admin/menu");
+});
+
+router.post("/menu/:id/deplacer", requireAuth, express.urlencoded({ extended: true }), (req, res) => {
+  const nav = db.getNav().slice().sort((a, b) => a.order - b.order);
+  const idx = nav.findIndex((i) => i.id === req.params.id);
+  const swapWith = req.body.direction === "haut" ? idx - 1 : idx + 1;
+  if (idx === -1 || swapWith < 0 || swapWith >= nav.length) {
+    return res.redirect("/admin/menu");
+  }
+  const tmp = nav[idx].order;
+  nav[idx].order = nav[swapWith].order;
+  nav[swapWith].order = tmp;
+  db.saveNav(nav);
+  res.redirect("/admin/menu");
+});
+
+router.post("/menu/:id/visibilite", requireAuth, express.urlencoded({ extended: true }), (req, res) => {
+  const nav = db.getNav();
+  const item = nav.find((i) => i.id === req.params.id);
+  if (item) {
+    item.hidden = req.body.hidden === "1";
+    db.saveNav(nav);
+    setFlash(req, "success", item.hidden ? `« ${item.label} » masqué du menu.` : `« ${item.label} » visible dans le menu.`);
+  }
+  res.redirect("/admin/menu");
 });
 
 /* ---------- Paramètres du site ---------- */

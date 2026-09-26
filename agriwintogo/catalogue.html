@@ -66,12 +66,14 @@
       <span class="brand-text"><strong>Menu</strong></span>
       <button class="mobile-nav-close" id="navClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
+    <div id="mobileNavLinks">
     <a href="a-propos.html">À propos</a>
     <a href="services.html">Nos services</a>
     <a href="produits.html">Nos produits</a>
     <a href="realisations.html">Nos réalisations</a>
     <a href="catalogue.html" class="active">Catalogue</a>
     <a href="contact.html">Contact</a>
+    </div>
     <div class="mobile-nav-actions">
       <a href="tel:+22896638200" class="btn btn-call btn-block">Appeler maintenant</a>
       <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">Discuter sur WhatsApp</a>
@@ -82,11 +84,11 @@
 <main id="main">
 
 <section class="photo-hero hero-sm">
-  <img src="images/photos/woman-market-web.jpg" alt="Vente et distribution de produits agricoles" width="1400" height="1866" loading="eager">
+  <img src="images/photos/woman-market-web.jpg" alt="Vente et distribution de produits agricoles" width="1400" height="1866" loading="eager" data-ck="catalogue.hero.image">
   <div class="container">
     <div class="hero-breadcrumb"><a href="index.html">Accueil</a> / Catalogue</div>
-    <h1>Catalogue de nos produits</h1>
-    <p class="lead">Plus de 50 plants : arbres fruitiers, agrumes, épices, herbes aromatiques et plantes d'ornement. Commande simple via WhatsApp — paiement en ligne bientôt disponible (Phase 2).</p>
+    <h1 data-ck="catalogue.hero.title">Catalogue de nos produits</h1>
+    <p class="lead" data-ck="catalogue.hero.lead">Plus de 50 plants : arbres fruitiers, agrumes, épices, herbes aromatiques et plantes d'ornement. Commande simple via WhatsApp — paiement en ligne bientôt disponible (Phase 2).</p>
   </div>
 </section>
 
@@ -126,9 +128,9 @@
   <div class="container">
     <div class="two-col">
       <div>
-        <span class="eyebrow">Phase 2 — bientôt disponible</span>
-        <h2>Une vraie boutique en ligne arrive prochainement</h2>
-        <p>Dès la validation de notre compte marchand, vous pourrez ajouter vos produits au panier et régler directement en ligne via T-Money ou Flooz/Moov Money. En attendant, chaque commande se fait simplement via WhatsApp ou notre formulaire de contact.</p>
+        <span class="eyebrow" data-ck="catalogue.phase2.eyebrow">Phase 2 — bientôt disponible</span>
+        <h2 data-ck="catalogue.phase2.title">Une vraie boutique en ligne arrive prochainement</h2>
+        <p data-ck="catalogue.phase2.text">Dès la validation de notre compte marchand, vous pourrez ajouter vos produits au panier et régler directement en ligne via T-Money ou Flooz/Moov Money. En attendant, chaque commande se fait simplement via WhatsApp ou notre formulaire de contact.</p>
         <div class="btn-group">
           <a href="contact.html" class="btn btn-green">Passer une commande</a>
         </div>
@@ -167,7 +169,7 @@
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
-        <ul>
+        <ul id="footerNavLinks">
           <li><a href="index.html">Accueil</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="services.html">Nos services</a></li>
@@ -209,6 +211,7 @@
   <button class="fab fab-top" id="fabTop" aria-label="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 </div>
 
+<script src="js/content.js"></script>
 <script src="js/site-config.js"></script>
 <script src="js/products.js"></script>
 <script src="js/catalogue.js"></script>

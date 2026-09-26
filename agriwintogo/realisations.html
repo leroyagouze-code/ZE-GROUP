@@ -66,12 +66,14 @@
       <span class="brand-text"><strong>Menu</strong></span>
       <button class="mobile-nav-close" id="navClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
+    <div id="mobileNavLinks">
     <a href="a-propos.html">À propos</a>
     <a href="services.html">Nos services</a>
     <a href="produits.html">Nos produits</a>
     <a href="realisations.html" class="active">Nos réalisations</a>
     <a href="catalogue.html">Catalogue</a>
     <a href="contact.html">Contact</a>
+    </div>
     <div class="mobile-nav-actions">
       <a href="tel:+22896638200" class="btn btn-call btn-block">Appeler maintenant</a>
       <a href="https://wa.me/22896638200" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">Discuter sur WhatsApp</a>
@@ -82,19 +84,19 @@
 <main id="main">
 
 <section class="photo-hero hero-sm">
-  <img src="images/photos/man-planting-tree-web.jpg" alt="Mise en terre d'un jeune plant" width="1600" height="1236" loading="eager">
+  <img src="images/photos/man-planting-tree-web.jpg" alt="Mise en terre d'un jeune plant" width="1600" height="1236" loading="eager" data-ck="realisations.hero.image">
   <div class="container">
     <div class="hero-breadcrumb"><a href="index.html">Accueil</a> / Nos réalisations</div>
-    <h1>Des projets agricoles concrets, menés avec nos clients</h1>
-    <p class="lead">Un aperçu de l'univers AgriWin Togo — la galerie de nos propres réalisations (pépinière, chantiers, formations) sera mise en ligne dès que les photos nous seront transmises.</p>
+    <h1 data-ck="realisations.hero.title">Des projets agricoles concrets, menés avec nos clients</h1>
+    <p class="lead" data-ck="realisations.hero.lead">Un aperçu de l'univers AgriWin Togo — la galerie de nos propres réalisations (pépinière, chantiers, formations) sera mise en ligne dès que les photos nous seront transmises.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Ambiance & terrain</span>
-      <h2>Le travail de la terre, au quotidien</h2>
+      <span class="eyebrow" data-ck="realisations.gallery.eyebrow">Ambiance & terrain</span>
+      <h2 data-ck="realisations.gallery.title">Le travail de la terre, au quotidien</h2>
     </div>
     <div class="mood-gallery">
       <div class="mood-item">
@@ -129,8 +131,8 @@
   <div class="container">
     <div class="cta-band">
       <div class="cta-text">
-        <h2>Votre projet pourrait être le prochain</h2>
-        <p>Parlons de vos besoins et voyons comment AgriWin Togo peut vous accompagner.</p>
+        <h2 data-ck="realisations.cta.title">Votre projet pourrait être le prochain</h2>
+        <p data-ck="realisations.cta.text">Parlons de vos besoins et voyons comment AgriWin Togo peut vous accompagner.</p>
       </div>
       <div class="btn-group">
         <a href="contact.html" class="btn btn-outline">Démarrer un projet</a>
@@ -157,7 +159,7 @@
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
-        <ul>
+        <ul id="footerNavLinks">
           <li><a href="index.html">Accueil</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="services.html">Nos services</a></li>
@@ -199,6 +201,7 @@
   <button class="fab fab-top" id="fabTop" aria-label="Retour en haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 </div>
 
+<script src="js/content.js"></script>
 <script src="js/site-config.js"></script>
 <script src="js/main.js"></script>
 </body>
